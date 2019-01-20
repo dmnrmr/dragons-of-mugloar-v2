@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="./" />
+
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <title>Dragons of Mugloar 2</title>
+
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
+    <% for (var css in htmlWebpackPlugin.files.css) { %>
+      <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+    <% } %>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <noscript>
+      <div>
+        <p>
+          It seems that you have JavaScript disabled. Visit
+          <a href="http://www.enable-javascript.com/" target="_blank">this</a>
+          site to obtain instructions on how to enable JavaScript.
+        </p>
+      </div>
+    </noscript>
+
+    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+      <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+    <% } %>
+  </body>
+</html>
