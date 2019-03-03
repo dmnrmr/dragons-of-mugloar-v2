@@ -1,15 +1,18 @@
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
     compress: true,
+    contentBase: path.join(__dirname, 'dist'),
+    disableHostCheck: true,
     historyApiFallback: true,
     port: 3000,
-    disableHostCheck: true
+    quiet: true
   },
   devtool: 'inline-source-map',
   entry: './src/index.js',
@@ -50,9 +53,13 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new FriendlyErrorsWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.ejs',
       inject: false
+    }),
+    new SimpleProgressWebpackPlugin({
+      format: 'minimal'
     }),
     new StyleLintPlugin({
       files: ['**/*.{vue,scss}']
@@ -63,5 +70,6 @@ module.exports = {
     modules: ['node_modules'],
     extensions: ['.js', '.vue']
   },
+  stats: 'none',
   target: 'web'
 };
