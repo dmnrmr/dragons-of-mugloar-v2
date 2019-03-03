@@ -1,9 +1,11 @@
 import Vue from 'vue';
-import App from './App.vue';
+import Root from './Root.vue';
+import router from './router';
 
 Vue.create = options => new Vue(options);
 
 Vue.create({
-  el: '#app',
-  render: h => h(App)
+  el: '#root',
+  render: h => h(Root),
+  router
 });

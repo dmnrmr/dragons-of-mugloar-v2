@@ -11,6 +11,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     disableHostCheck: true,
     historyApiFallback: true,
+    open: true,
     port: 3000,
     quiet: true
   },
