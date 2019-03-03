@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "lint": "eslint --ext .js,.vue src"
   },
   "repository": {
     "type": "git",
@@ -24,8 +25,14 @@
   "devDependencies": {
     "@babel/core": "7.2.2",
     "@babel/preset-env": "7.2.3",
+    "babel-eslint": "10.0.1",
     "babel-loader": "8.0.5",
     "css-loader": "2.1.0",
+    "eslint": "5.15.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-loader": "2.1.2",
+    "eslint-plugin-import": "2.16.0",
+    "eslint-plugin-vue": "5.2.2",
     "html-webpack-plugin": "3.2.0",
     "vue-loader": "15.5.1",
     "vue-template-compiler": "2.5.22",

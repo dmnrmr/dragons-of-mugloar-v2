@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import App from './App.vue';
 
-new Vue({
+Vue.create = options => new Vue(options);
+
+Vue.create({
   el: '#app',
   render: h => h(App)
-})
+});
