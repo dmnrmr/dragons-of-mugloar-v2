@@ -1,3 +1,5 @@
+import 'normalize.css';
+
 import Vue from 'vue';
 import Root from './Root.vue';
 import router from './router';

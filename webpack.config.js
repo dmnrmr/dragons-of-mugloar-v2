@@ -22,28 +22,37 @@ module.exports = {
     rules: [
       {
         enforce: 'pre',
+        exclude: /node_modules/,
         test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
+        use: [
+          { loader: 'eslint-loader' }
+        ]
       },
       {
+        exclude: /node_modules/,
         test: /\.vue$/,
-        loader: 'vue-loader'
+        use: [
+          { loader: 'vue-loader' }
+        ]
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env']
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env']
+            }
+          }
+        ]
       },
       {
-        test: /\.scss$/,
+        test: /\.(s?)css$/,
         use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader'
+          { loader: 'vue-style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'sass-loader' }
         ]
       }
     ]
