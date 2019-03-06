@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <h1>Dragons of Mugloar 2</h1>
+  <div class="home-page">
+    <h1 class="home-page__title">
+      Dragons of Mugloar 2
+    </h1>
 
     <nav>
       <router-link to="/game">
@@ -14,7 +16,7 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   h1 {
     color: darkgreen;
   }
