@@ -11,13 +11,13 @@
     color: inherit;
     text-decoration: none;
     text-transform: uppercase;
-    border: 0.15em solid $main-color;
+    border: .15em solid $main-color;
     padding: 1em;
     width: 20em;
     display: inline-block;
     font-weight: 700;
     text-align: center;
-    transition: background-color 0.2s ease-out, color 0.2s ease-out;
+    transition: background-color .2s ease-out, color .2s ease-out;
 
     &:hover {
       background-color: $main-color;

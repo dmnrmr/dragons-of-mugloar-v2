@@ -28,7 +28,7 @@
 </style>
 
 <script>
-import DmAnchorButton from '../../common-components/AnchorButton.vue';
+import DmAnchorButton from '../../../components/AnchorButton.vue';
 
 export default {
   name: 'DmHome',

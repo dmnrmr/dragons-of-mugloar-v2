@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import About from './modules/about/containers/About.vue';
-import Game from './modules/game/containers/Game.vue';
-import Home from './modules/home/containers/Home.vue';
-import NotFound from './modules/NotFound/containers/NotFound.vue';
+import About from './views/pages/About/containers/About.vue';
+import Game from './views/pages/Game/containers/Game.vue';
+import Home from './views/pages/Home/containers/Home.vue';
+import NotFound from './views/pages/NotFound/containers/NotFound.vue';
 
 Vue.use(VueRouter);
 
