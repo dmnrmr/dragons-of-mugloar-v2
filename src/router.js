@@ -8,6 +8,7 @@ import NotFound from './modules/NotFound/containers/NotFound.vue';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
+  mode: 'history',
   routes: [
     { path: '/', component: Home },
     { path: '/about', component: About },
