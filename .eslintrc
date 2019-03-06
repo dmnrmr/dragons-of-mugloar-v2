@@ -13,6 +13,7 @@
   ],
   "rules": {
     "comma-dangle": ["error", "never"],
-    "max-len": ["error", 120]
+    "max-len": ["error", 120],
+    "vue/max-attributes-per-line": "off"
   }
 }

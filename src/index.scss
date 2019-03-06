@@ -1,0 +1,30 @@
+@import '~normalize.css';
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 0.8em/normal 'Open Sans', sans-serif;
+  padding: 4em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#content {
+  height: 100%;
+}

@@ -10,7 +10,7 @@ const router = new VueRouter({
   routes: [
     { path: '/', component: Home },
     { path: '/about', component: About },
-    { path: '/game', component: Game }
+    { path: '/play', component: Game }
   ]
 });
 
