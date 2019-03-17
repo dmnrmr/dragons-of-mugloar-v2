@@ -1,3 +1,4 @@
+const CopyPlugin = require('copy-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
@@ -51,6 +52,9 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new CopyPlugin([
+      { from: 'assets', to: 'assets' }
+    ]),
     new FriendlyErrorsWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.ejs',
