@@ -4,13 +4,22 @@
     "es6": true,
     "node": true
   },
-  "parserOptions": {
-    "parser": "babel-eslint"
-  },
   "extends": [
     "airbnb-base",
     "plugin:vue/recommended"
   ],
+  "overrides": [
+    {
+      "files": ["config/*.js"],
+      "rules": {
+        "import/order": "off",
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ],
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
   "rules": {
     "comma-dangle": ["error", "never"],
     "max-len": ["error", 120],

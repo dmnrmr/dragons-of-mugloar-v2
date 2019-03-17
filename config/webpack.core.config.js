@@ -6,18 +6,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
-  devServer: {
-    compress: true,
-    contentBase: path.join(__dirname, 'dist'),
-    disableHostCheck: true,
-    historyApiFallback: true,
-    open: true,
-    port: 3000,
-    quiet: true
-  },
-  devtool: 'inline-source-map',
   entry: './src/index.js',
-  mode: 'development',
   module: {
     rules: [
       {
@@ -58,8 +47,7 @@ module.exports = {
     ]
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.[contenthash].js',
+    path: path.resolve(__dirname, '../dist'),
     publicPath: '/'
   },
   plugins: [

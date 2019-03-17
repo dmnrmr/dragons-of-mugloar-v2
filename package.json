@@ -4,11 +4,11 @@
   "description": "https://www.dragonsofmugloar.com/",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --config config/webpack.prod.config.js",
     "lint-code": "eslint --ext .js,.vue src",
     "lint-style": "stylelint **/*.{vue,scss}",
     "lint": "npm run lint-style && npm run lint-code",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --config config/webpack.dev.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -47,8 +47,9 @@
     "stylelint-webpack-plugin": "0.10.5",
     "vue-loader": "15.5.1",
     "vue-template-compiler": "2.5.22",
-    "webpack": "^4.28.4",
+    "webpack": "4.28.4",
     "webpack-cli": "3.2.1",
-    "webpack-dev-server": "3.1.14"
+    "webpack-dev-server": "3.1.14",
+    "webpack-merge": "4.2.1"
   }
 }
