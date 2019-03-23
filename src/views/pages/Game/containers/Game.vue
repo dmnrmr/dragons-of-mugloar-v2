@@ -4,13 +4,15 @@
       <h1 class="content-game__title">
         The game
       </h1>
+
+      <p>Soon™</p>
     </div>
   </dm-content-layout>
 </template>
 
 <style lang="scss" scoped>
   .content-game {
-    padding: 1rem;
+    padding: 2rem;
 
     &__title {
       text-transform: uppercase;
