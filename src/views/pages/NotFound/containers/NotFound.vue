@@ -1,13 +1,16 @@
 <template>
-  <div class="not-found">
-    <h1 class="not-found__title">
+  <div class="not-found-page">
+    <h1 class="not-found-page__title">
       404
     </h1>
+    <router-link :to="'/'">
+      Go home
+    </router-link>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .not-found {
+  .not-found-page {
     display: flex;
     height: 100%;
     flex-direction: column;
