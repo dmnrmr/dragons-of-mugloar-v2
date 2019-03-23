@@ -1,8 +1,10 @@
 import './index.scss';
 import Vue from 'vue';
+import VueSimpleSVG from 'vue-simple-svg';
 import Root from './Root.vue';
 import router from './router';
 
+Vue.use(VueSimpleSVG);
 Vue.create = options => new Vue(options);
 
 Vue.create({
