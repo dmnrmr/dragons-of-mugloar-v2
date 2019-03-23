@@ -5,6 +5,6 @@ module.exports = merge(coreConfig, {
   devtool: 'source-map',
   mode: 'production',
   output: {
-    filename: 'bundle.[contenthash].js'
+    filename: '[name].[contenthash].js'
   }
 });
