@@ -5,9 +5,9 @@
     </h1>
 
     <nav class="home-page__navigation">
-      <dm-anchor-button :text="'Play game'" :to="'/play'" />
+      <dm-anchor-button class="home-page__navigation-item" :text="'Play game'" :to="'/play'" />
 
-      <dm-anchor-button :text="'About the game'" :to="'/about'" />
+      <dm-anchor-button class="home-page__navigation-item" :text="'About the game'" :to="'/about'" />
     </nav>
   </div>
 </template>
@@ -23,6 +23,14 @@
     &__title {
       font-size: 6em;
       text-transform: uppercase;
+    }
+
+    &__navigation-item {
+      margin-right: 2rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 </style>
