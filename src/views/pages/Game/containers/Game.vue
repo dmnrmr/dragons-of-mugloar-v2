@@ -1,11 +1,30 @@
 <template>
-  <div>
-    <h1>The game</h1>
-  </div>
+  <dm-content-layout>
+    <div class="content-game">
+      <h1 class="content-game__title">
+        The game
+      </h1>
+    </div>
+  </dm-content-layout>
 </template>
 
 <style lang="scss" scoped>
-  h1 {
-    color: darkred;
+  .content-game {
+    padding: 1rem;
+
+    &__title {
+      text-transform: uppercase;
+    }
   }
 </style>
+
+<script>
+import DmContentLayout from '../../../layouts/ContentLayout.vue';
+
+export default {
+  name: 'DmGame',
+  components: {
+    DmContentLayout
+  }
+};
+</script>
