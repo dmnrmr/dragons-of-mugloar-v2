@@ -44,7 +44,7 @@
     }
 
     &__content {
-      flex-basis: 90%;
+      flex-basis: 80%;
     }
   }
 </style>
