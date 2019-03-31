@@ -36,15 +36,6 @@ module.exports = {
             }
           }
         ]
-      },
-      {
-        exclude: /node_modules/,
-        test: /\.(s?)css$/,
-        use: [
-          { loader: 'vue-style-loader' },
-          { loader: 'css-loader' },
-          { loader: 'sass-loader' }
-        ]
       }
     ]
   },

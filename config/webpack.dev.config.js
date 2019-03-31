@@ -15,6 +15,20 @@ module.exports = merge(coreConfig, {
   },
   devtool: 'cheap-module-eval-source-map',
   mode: 'development',
+  module: {
+    rules: [
+      {
+        exclude: /node_modules/,
+        test: /\.(s?)css$/,
+        use: [
+          { loader: 'vue-style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'sass-loader' }
+        ]
+      }
+    ]
+  },
+
   output: {
     filename: 'bundle.[hash].js'
   },
