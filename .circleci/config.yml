@@ -14,3 +14,6 @@ jobs:
       - run:
           name: Run unit tests
           command: npm t
+      - run:
+          name: Deploy
+          command: npm run deploy

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config config/webpack.prod.config.js",
+    "deploy": "surge --project ./dist --domain https://dom2.surge.sh",
     "dist": "npm run build && lite-server",
     "lint-code": "eslint --ext .js,.vue src",
     "lint-style": "stylelint **/*.{vue,scss}",
@@ -55,6 +56,7 @@
     "stylelint": "9.10.1",
     "stylelint-config-standard": "18.2.0",
     "stylelint-webpack-plugin": "0.10.5",
+    "surge": "0.20.3",
     "vue-loader": "15.7.0",
     "vue-template-compiler": "2.6.10",
     "webpack": "4.29.6",
