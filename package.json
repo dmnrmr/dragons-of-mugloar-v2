@@ -10,7 +10,7 @@
     "lint-style": "stylelint **/*.{vue,scss}",
     "lint": "npm run lint-style && npm run lint-code",
     "start": "webpack-dev-server --config config/webpack.dev.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
