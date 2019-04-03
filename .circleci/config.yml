@@ -15,5 +15,11 @@ jobs:
           name: Run unit tests
           command: npm t
       - run:
+          name: Run unit tests
+          command: npm t
+      - run:
+          name: Build project
+          command: npm run build
+      - run:
           name: Deploy
           command: npm run deploy
