@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config config/webpack.prod.config.js",
-    "deploy": "commonshost deploy --root ./dist --domain https://dom2.commons.host --confirm",
+    "deploy": "commonshost deploy --root ./dist --domain https://dom2.commons.host --options commonshost.conf.js --confirm",
     "dist": "npm run build && lite-server",
     "lint-code": "eslint --ext .js,.vue src",
     "lint-style": "stylelint **/*.{vue,scss}",

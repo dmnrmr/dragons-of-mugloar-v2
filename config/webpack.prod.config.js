@@ -1,6 +1,5 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const coreConfig = require('./webpack.core.config.js');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
@@ -52,11 +51,6 @@ module.exports = merge(coreConfig, {
     new webpack.SourceMapDevToolPlugin({
       exclude: /vendor/,
       filename: '[name].js.map'
-    }),
-    new HtmlWebpackPlugin({
-      filename: '200.html',
-      template: './src/index.ejs',
-      inject: false
     })
   ]
 });
