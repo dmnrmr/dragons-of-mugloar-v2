@@ -21,5 +21,8 @@ jobs:
           name: Build project
           command: npm run build
       - run:
+          name: Commons.host authenticate
+          command: npx commonshost signin --username ${COMMONSHOST_USERNAME} --password ${COMMONSHOST_PASSWORD}
+      - run:
           name: Deploy
           command: npm run deploy
