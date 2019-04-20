@@ -46,6 +46,14 @@
     &__content {
       flex-basis: 80%;
     }
+
+    @media all and (max-width: 575px) {
+      display: block;
+
+      &__side {
+        display: none;
+      }
+    }
   }
 </style>
 

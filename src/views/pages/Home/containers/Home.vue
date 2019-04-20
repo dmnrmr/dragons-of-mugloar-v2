@@ -16,20 +16,51 @@
   .home-page {
     display: flex;
     height: 100%;
+    padding: 1rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     &__title {
       font-size: 6em;
+      line-height: 4rem;
       text-transform: uppercase;
     }
 
-    &__navigation-item {
-      margin-right: 2rem;
+    &__navigation {
+      padding-top: 2rem;
 
-      &:last-child {
-        margin-right: 0;
+      &-item {
+        margin-right: 2rem;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    @media all and (max-width: 1199px) {
+      &__title {
+        text-transform: uppercase;
+        text-align: center;
+      }
+    }
+
+    @media all and (max-width: 575px) {
+      &__title {
+        font-size: 2rem;
+        line-height: normal;
+      }
+
+      &__navigation {
+        width: 100%;
+        padding-top: 1rem;
+
+        &-item {
+          margin-right: 0;
+          margin-bottom: 1rem;
+          width: 100%;
+        }
       }
     }
   }
