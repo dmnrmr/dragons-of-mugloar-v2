@@ -58,7 +58,7 @@
 </style>
 
 <script>
-import DmIcon from '../components/Icon.vue';
+import DmIcon from '../components/icon/Icon.vue';
 
 export default {
   name: 'DmContentLayout',
