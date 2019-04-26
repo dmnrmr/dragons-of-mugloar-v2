@@ -1,3 +1,17 @@
+<template>
+  <div class="content-page">
+    <div class="content-page__side">
+      <router-link class="content-page__side-link" :to="'/'">
+        <dm-icon class="content-page__side-link-icon" :name="'arrow-left'" :size="'md'" />
+      </router-link>
+    </div>
+
+    <div class="content-page__content">
+      <slot />
+    </div>
+  </div>
+</template>
+
 <style lang="scss" scoped>
   .content-page {
     height: 100%;
@@ -48,21 +62,8 @@ import DmIcon from '../components/icon/Icon.vue';
 
 export default {
   name: 'DmContentLayout',
-  functional: true,
-  render(_, { children }) {
-    return (
-      <div class="content-page">
-        <div class="content-page__side">
-          <router-link class="content-page__side-link" to="/">
-            <DmIcon class="content-page__side-link-icon" name="arrow-left" size="md" />
-          </router-link>
-        </div>
-
-        <div class="content-page__content">
-          {children}
-        </div>
-      </div>
-    );
+  components: {
+    DmIcon
   }
 };
 </script>

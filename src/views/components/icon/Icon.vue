@@ -1,3 +1,11 @@
+<template>
+  <simple-svg
+    :filepath="`./assets/icons/${icon.name}.svg`"
+    :width="icon.size.width"
+    :height="icon.size.height"
+  />
+</template>
+
 <script>
 const iconSizes = {
   sm: { width: '36px', height: '36px' },
@@ -10,7 +18,6 @@ const iconFileNames = {
 
 export default {
   name: 'DmIcon',
-  functional: true,
   props: {
     name: {
       type: String,
@@ -22,20 +29,11 @@ export default {
       default: 'md'
     }
   },
-  render(_, { data, props }) {
-    const icon = {
-      name: iconFileNames[props.name],
-      size: iconSizes[props.size]
-    };
-
-    return (
-      <simple-svg
-        class={data.staticClass}
-        filepath={`./assets/icons/${icon.name}.svg`}
-        width={icon.size.width}
-        height={icon.size.height}
-      />
-    );
+  computed: {
+    icon: ({ name, size }) => ({
+      name: iconFileNames[name],
+      size: iconSizes[size]
+    })
   }
 };
 </script>

@@ -1,3 +1,9 @@
+<template>
+  <router-link class="anchor-button" :to="to">
+    {{ text }}
+  </router-link>
+</template>
+
 <style lang="scss" scoped>
   @import '../../../styles/variables';
 
@@ -23,7 +29,6 @@
 <script>
 export default {
   name: 'DmAnchorButton',
-  functional: true,
   props: {
     text: {
       type: String,
@@ -33,13 +38,6 @@ export default {
       type: String,
       required: true
     }
-  },
-  render(_, { data, props }) {
-    return (
-      <router-link class={`${data.staticClass} anchor-button`} to={props.to}>
-        { props.text }
-      </router-link>
-    );
   }
 };
 </script>
