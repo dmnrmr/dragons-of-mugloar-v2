@@ -5,25 +5,27 @@
 </template>
 
 <style lang="scss" scoped>
-  @import '../../../styles/variables';
+/* stylelint-disable */
+@import '../../../styles/variables';
 
-  .anchor-button {
-    color: inherit;
-    text-decoration: none;
-    text-transform: uppercase;
-    border: .15em solid $main-color;
-    padding: 1em;
-    width: 20em;
-    display: inline-block;
-    font-weight: 700;
-    text-align: center;
-    transition: background-color .2s ease-out, color .2s ease-out;
+.anchor-button {
+  color: inherit;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 0.15em solid $main-color;
+  padding: 1em;
+  width: 20em;
+  display: inline-block;
+  font-weight: 700;
+  text-align: center;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
 
-    &:hover {
-      background-color: $main-color;
-      color: $secondary-color;
-    }
+  &:hover {
+    background-color: $main-color;
+    color: $secondary-color;
   }
+}
+/* stylelint-enable */
 </style>
 
 <script>

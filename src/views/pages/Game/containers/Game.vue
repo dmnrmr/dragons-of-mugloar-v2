@@ -11,13 +11,15 @@
 </template>
 
 <style lang="scss" scoped>
-  .content-game {
-    padding: 2rem;
+/* stylelint-disable */
+.content-game {
+  padding: 2rem;
 
-    &__title {
-      text-transform: uppercase;
-    }
+  &__title {
+    text-transform: uppercase;
   }
+}
+/* stylelint-enable */
 </style>
 
 <script>

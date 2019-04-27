@@ -8,31 +8,35 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      component: () => import(
-        /* webpackChunkName: "home" */
-        './views/pages/Home/containers/Home.vue'
-      )
+      component: () =>
+        import(
+          /* webpackChunkName: "home" */
+          './views/pages/Home/containers/Home.vue'
+        )
     },
     {
       path: '/about',
-      component: () => import(
-        /* webpackChunkName: "about" */
-        './views/pages/About/containers/About.vue'
-      )
+      component: () =>
+        import(
+          /* webpackChunkName: "about" */
+          './views/pages/About/containers/About.vue'
+        )
     },
     {
       path: '/play',
-      component: () => import(
-        /* webpackChunkName: "game" */
-        './views/pages/Game/containers/Game.vue'
-      )
+      component: () =>
+        import(
+          /* webpackChunkName: "game" */
+          './views/pages/Game/containers/Game.vue'
+        )
     },
     {
       path: '/404',
-      component: () => import(
-        /* webpackChunkName: "not-found" */
-        './views/pages/NotFound/containers/NotFound.vue'
-      )
+      component: () =>
+        import(
+          /* webpackChunkName: "not-found" */
+          './views/pages/NotFound/containers/NotFound.vue'
+        )
     },
     {
       path: '*',

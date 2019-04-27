@@ -14,23 +14,17 @@ module.exports = {
         enforce: 'pre',
         exclude: /node_modules/,
         test: /\.(js|vue)$/,
-        use: [
-          { loader: 'eslint-loader' }
-        ]
+        use: [{ loader: 'eslint-loader' }]
       },
       {
         exclude: /node_modules/,
         test: /\.vue$/,
-        use: [
-          { loader: 'vue-loader' }
-        ]
+        use: [{ loader: 'vue-loader' }]
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          { loader: 'babel-loader' }
-        ]
+        use: [{ loader: 'babel-loader' }]
       }
     ]
   },
@@ -39,9 +33,7 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
-    new CopyPlugin([
-      { from: 'assets', to: 'assets' }
-    ]),
+    new CopyPlugin([{ from: 'assets', to: 'assets' }]),
     new FriendlyErrorsWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.ejs',

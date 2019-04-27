@@ -10,18 +10,20 @@
 </template>
 
 <style lang="scss" scoped>
-  .not-found-page {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* stylelint-disable */
+.not-found-page {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    &__title {
-      font-size: 6em;
-      text-transform: uppercase;
-    }
+  &__title {
+    font-size: 6em;
+    text-transform: uppercase;
   }
+}
+/* stylelint-enable */
 </style>
 
 <script>

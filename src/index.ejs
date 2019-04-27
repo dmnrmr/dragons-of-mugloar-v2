@@ -3,16 +3,19 @@
   <head>
     <base href="./" />
 
-    <meta charset="utf-8">
-    <meta content="ie=edge" http-equiv="x-ua-compatible">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta charset="utf-8" />
+    <meta content="ie=edge" http-equiv="x-ua-compatible" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <title>Dragons of Mugloar 2</title>
 
-    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+      rel="stylesheet"
+    />
     <% for (var css in htmlWebpackPlugin.files.css) { %>
-      <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+    <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet" />
     <% } %>
   </head>
   <body>
@@ -29,7 +32,7 @@
     </noscript>
 
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-      <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
     <% } %>
   </body>
 </html>
