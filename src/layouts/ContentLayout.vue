@@ -2,10 +2,10 @@
   <div class="content-page">
     <div class="content-page__side">
       <router-link class="content-page__side-link" :to="'/'">
-        <dm-icon
+        <ArrowLeft
           class="content-page__side-link-icon"
-          :name="'arrow-left'"
-          :size="'md'"
+          width="48px"
+          height="48px"
         />
       </router-link>
     </div>
@@ -64,12 +64,12 @@
 </style>
 
 <script>
-import DmIcon from '../components/icon/Icon.vue';
+import ArrowLeft from '../components/icons/keyboard_arrow_left.svg';
 
 export default {
   name: 'DmContentLayout',
   components: {
-    DmIcon
+    ArrowLeft
   }
 };
 </script>
