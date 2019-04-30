@@ -6,7 +6,7 @@
 
 <style lang="scss" scoped>
 /* stylelint-disable */
-@import '../../../styles/variables';
+@import '../../styles/variables';
 
 .anchor-button {
   color: inherit;

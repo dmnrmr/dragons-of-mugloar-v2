@@ -11,7 +11,7 @@ const router = new VueRouter({
       component: () =>
         import(
           /* webpackChunkName: "home" */
-          './views/pages/Home/containers/Home.vue'
+          './modules/Home/containers/Home.vue'
         )
     },
     {
@@ -19,7 +19,7 @@ const router = new VueRouter({
       component: () =>
         import(
           /* webpackChunkName: "about" */
-          './views/pages/About/containers/About.vue'
+          './modules/About/containers/About.vue'
         )
     },
     {
@@ -27,7 +27,7 @@ const router = new VueRouter({
       component: () =>
         import(
           /* webpackChunkName: "game" */
-          './views/pages/Game/containers/Game.vue'
+          './modules/Game/containers/Game.vue'
         )
     },
     {
@@ -35,7 +35,7 @@ const router = new VueRouter({
       component: () =>
         import(
           /* webpackChunkName: "not-found" */
-          './views/pages/NotFound/containers/NotFound.vue'
+          './modules/NotFound/containers/NotFound.vue'
         )
     },
     {
