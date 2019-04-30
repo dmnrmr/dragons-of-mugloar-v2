@@ -64,7 +64,7 @@
 </style>
 
 <script>
-import ArrowLeft from '../components/icons/keyboard_arrow_left.svg';
+import ArrowLeft from '../components/icons/keyboard-arrow-left.svg';
 
 export default {
   name: 'DmContentLayout',
