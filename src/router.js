@@ -1,11 +1,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import nprogress from 'nprogress';
 import home from './modules/Home/routes';
 import about from './modules/About/routes';
 import game from './modules/Game/routes';
 import notFound from './modules/NotFound/routes';
 
 Vue.use(VueRouter);
+nprogress.configure({ showSpinner: false });
 
 const router = new VueRouter({
   mode: 'history',
@@ -20,5 +22,13 @@ const router = new VueRouter({
     }
   ]
 });
+
+router.beforeEach((_, __, next) => {
+  nprogress.start();
+
+  next();
+});
+
+router.afterEach(() => nprogress.done());
 
 export default router;

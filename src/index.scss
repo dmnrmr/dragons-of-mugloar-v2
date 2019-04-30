@@ -1,4 +1,5 @@
 @import '~normalize.css';
+@import '~nprogress/nprogress.css';
 
 html,
 body {
@@ -30,4 +31,14 @@ a {
 
 #content {
   height: 100%;
+}
+
+#nprogress {
+  .bar {
+    background: black;
+  }
+
+  .peg {
+    display: none;
+  }
 }

@@ -25,6 +25,14 @@
   "rules": {
     "comma-dangle": ["error", "never"],
     "max-len": ["error", 80],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state"]
+      }
+    ],
+    "no-return-assign": "off",
     "vue/max-attributes-per-line": "off"
   }
 }

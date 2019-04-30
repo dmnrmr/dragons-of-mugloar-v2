@@ -1,9 +1,14 @@
+import mutations from './mutations';
+import actions from './actions';
+
 const store = {
   namespaced: true,
-  state: {},
+  state: {
+    stats: {}
+  },
   getters: {},
-  actions: {},
-  mutations: {}
+  actions,
+  mutations
 };
 
 export default store;

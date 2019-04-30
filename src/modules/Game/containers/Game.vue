@@ -5,7 +5,9 @@
         The game
       </h1>
 
-      <p>Soon™</p>
+      <div class="content-game__stats">
+        {{ stats }}
+      </div>
     </div>
   </dm-content-layout>
 </template>
@@ -23,12 +25,16 @@
 </style>
 
 <script>
+import { mapState } from 'vuex';
 import DmContentLayout from '../../../layouts/ContentLayout.vue';
 
 export default {
   name: 'DmGame',
   components: {
     DmContentLayout
+  },
+  computed: {
+    ...mapState('game', ['stats'])
   }
 };
 </script>
