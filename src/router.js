@@ -1,43 +1,19 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import home from './modules/Home/routes';
+import about from './modules/About/routes';
+import game from './modules/Game/routes';
+import notFound from './modules/NotFound/routes';
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    {
-      path: '/',
-      component: () =>
-        import(
-          /* webpackChunkName: "home" */
-          './modules/Home/containers/Home.vue'
-        )
-    },
-    {
-      path: '/about',
-      component: () =>
-        import(
-          /* webpackChunkName: "about" */
-          './modules/About/containers/About.vue'
-        )
-    },
-    {
-      path: '/play',
-      component: () =>
-        import(
-          /* webpackChunkName: "game" */
-          './modules/Game/containers/Game.vue'
-        )
-    },
-    {
-      path: '/404',
-      component: () =>
-        import(
-          /* webpackChunkName: "not-found" */
-          './modules/NotFound/containers/NotFound.vue'
-        )
-    },
+    home,
+    about,
+    game,
+    notFound,
     {
       path: '*',
       redirect: '/404'
