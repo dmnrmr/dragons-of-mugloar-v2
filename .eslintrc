@@ -22,9 +22,19 @@
   "parserOptions": {
     "parser": "babel-eslint"
   },
+  "plugins": ["chai-friendly"],
   "rules": {
+    "chai-friendly/no-unused-expressions": 2,
     "comma-dangle": ["error", "never"],
-    "max-len": ["error", 80],
+    "import/prefer-default-export": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 90,
+        "ignorePattern": "it\\('"
+      }
+    ],
+    "newline-before-return": "error",
     "no-param-reassign": [
       "error",
       {
@@ -33,6 +43,7 @@
       }
     ],
     "no-return-assign": "off",
+    "no-unused-expressions": "off",
     "vue/max-attributes-per-line": "off"
   }
 }

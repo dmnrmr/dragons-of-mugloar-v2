@@ -2,11 +2,7 @@
   <div class="content-page">
     <div class="content-page__side">
       <router-link class="content-page__side-link" :to="'/'">
-        <ArrowLeft
-          class="content-page__side-link-icon"
-          width="48px"
-          height="48px"
-        />
+        <ArrowLeft class="content-page__side-link-icon" width="48px" height="48px" />
       </router-link>
     </div>
 

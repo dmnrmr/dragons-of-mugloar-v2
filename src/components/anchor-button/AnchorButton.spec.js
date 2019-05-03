@@ -13,7 +13,7 @@ describe('AnchorButton component', () => {
   it('should pass correct data to `router-link`', () => {
     const stub = wrapper.find('router-link-stub');
 
-    expect(stub.attributes().to).toBe('foo');
-    expect(stub.text()).toBe('bar');
+    expect(stub.attributes().to).to.equal('foo');
+    expect(stub.text()).to.equal('bar');
   });
 });

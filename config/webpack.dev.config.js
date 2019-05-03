@@ -1,6 +1,8 @@
 const coreConfig = require('./webpack.core.config.js');
 const merge = require('webpack-merge');
 const path = require('path');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const webpack = require('webpack');
 
 module.exports = merge(coreConfig, {
@@ -19,6 +21,11 @@ module.exports = merge(coreConfig, {
     rules: [
       {
         exclude: /node_modules/,
+        test: /\.vue$/,
+        use: [{ loader: 'vue-loader' }]
+      },
+      {
+        exclude: /node_modules/,
         test: /\.(s?)css$/,
         use: [
           { loader: 'vue-style-loader' },
@@ -32,5 +39,11 @@ module.exports = merge(coreConfig, {
   output: {
     filename: 'bundle.[hash].js'
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [
+    new StyleLintPlugin({
+      files: ['**/*.{vue,scss}']
+    }),
+    new VueLoaderPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ]
 });

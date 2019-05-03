@@ -10,6 +10,6 @@ describe('Icon component', () => {
   });
 
   it('should render content into the slot', () => {
-    expect(wrapper.findAll('.page-content').length).toBe(1);
+    expect(wrapper.findAll('.page-content').length).to.equal(1);
   });
 });

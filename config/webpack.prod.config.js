@@ -2,6 +2,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const coreConfig = require('./webpack.core.config.js');
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const webpack = require('webpack');
 
 module.exports = merge(coreConfig, {
@@ -9,6 +11,11 @@ module.exports = merge(coreConfig, {
   mode: 'production',
   module: {
     rules: [
+      {
+        exclude: /node_modules/,
+        test: /\.vue$/,
+        use: [{ loader: 'vue-loader' }]
+      },
       {
         exclude: /node_modules/,
         test: /\.(s?)css$/,
@@ -48,6 +55,10 @@ module.exports = merge(coreConfig, {
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
     }),
+    new StyleLintPlugin({
+      files: ['**/*.{vue,scss}']
+    }),
+    new VueLoaderPlugin(),
     new webpack.SourceMapDevToolPlugin({
       exclude: /vendor/,
       filename: '[name].js.map'

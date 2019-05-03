@@ -5,9 +5,21 @@
         The game
       </h1>
 
-      <div class="content-game__stats">
-        {{ stats }}
-      </div>
+      <template v-if="status === LoadStatus.Success">
+        <div class="content-game__stats">
+          {{ game }}
+        </div>
+
+        <ul class="content-game__ads">
+          <li v-for="ad in ads" :key="ad.adId">
+            {{ ad }}
+          </li>
+        </ul>
+      </template>
+
+      <p v-else>
+        There was an error loading game.
+      </p>
     </div>
   </dm-content-layout>
 </template>
@@ -27,14 +39,16 @@
 <script>
 import { mapState } from 'vuex';
 import DmContentLayout from '../../../layouts/ContentLayout.vue';
+import LoadStatus from '../constants';
 
 export default {
   name: 'DmGame',
   components: {
     DmContentLayout
   },
+  data: () => ({ LoadStatus }),
   computed: {
-    ...mapState('game', ['stats'])
+    ...mapState('game', ['status', 'game', 'ads'])
   }
 };
 </script>
