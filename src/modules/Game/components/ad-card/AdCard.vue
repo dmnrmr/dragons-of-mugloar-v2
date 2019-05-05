@@ -8,25 +8,25 @@
       </div>
 
       <div class="level-right">
-        <div class="level-item">
+        <div v-tooltip="'Ad reward'" class="level-item">
           <dm-star />
-          <strong class="ad-reward">{{ ad.reward }}</strong>
+          <strong class="dm-ad-reward">{{ ad.reward }}</strong>
         </div>
 
-        <div class="level-item">
+        <div v-tooltip="'Ad expires in'" class="level-item">
           <dm-hourglass />
-          <strong class="ad-expires">{{ ad.expiresIn }}</strong>
+          <strong class="dm-ad-expires">{{ ad.expiresIn }}</strong>
         </div>
       </div>
     </div>
 
-    <section class="ad-message">
+    <section class="dm-ad-message">
       {{ ad.message }}
     </section>
 
     <footer>
       <button
-        class="button is-small is-fullwidth is-outlined is-link ad-take-action"
+        class="button is-small is-fullwidth is-outlined is-link dm-ad-take-action"
         @click="takeAction(ad.adId)"
       >
         Take action

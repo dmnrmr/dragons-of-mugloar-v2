@@ -100,7 +100,7 @@ describe('AdCard component', () => {
 
   describe('Reward', () => {
     it('should render rewards from props', () => {
-      const rewardRef = wrapper.find('.ad-reward');
+      const rewardRef = wrapper.find('.dm-ad-reward');
 
       expect(rewardRef.text()).to.equal(String(ad.reward));
     });
@@ -108,7 +108,7 @@ describe('AdCard component', () => {
 
   describe('Expires in', () => {
     it('should render expires in from props', () => {
-      const rewardRef = wrapper.find('.ad-expires');
+      const rewardRef = wrapper.find('.dm-ad-expires');
 
       expect(rewardRef.text()).to.equal(String(ad.expiresIn));
     });
@@ -116,7 +116,7 @@ describe('AdCard component', () => {
 
   describe('Message', () => {
     it('should render message from props', () => {
-      const rewardRef = wrapper.find('.ad-message');
+      const rewardRef = wrapper.find('.dm-ad-message');
 
       expect(rewardRef.text()).to.equal(String(ad.message));
     });
@@ -124,7 +124,7 @@ describe('AdCard component', () => {
 
   describe('Take action', () => {
     it('should emit event with ad id when taking action', () => {
-      wrapper.find('.ad-take-action').trigger('click');
+      wrapper.find('.dm-ad-take-action').trigger('click');
 
       const [[event]] = wrapper.emitted()['ad-take-action'];
 

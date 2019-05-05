@@ -4,6 +4,7 @@
       <div
         v-for="(stat, index) in gameStats"
         :key="index"
+        v-tooltip="stat.tooltip"
         :class="`level-item stat stat--${stat.name}`"
       >
         <component :is="stat.iconComponent"></component>
@@ -30,12 +31,30 @@ import DmForward from '../../../../components/icons/forward.svg';
 import DmMoney from '../../../../components/icons/attach-money.svg';
 
 const statComponentMap = {
-  lives: DmFavorite,
-  gold: DmMoney,
-  level: DmFace,
-  score: DmChartOutlined,
-  highScore: DmChart,
-  turn: DmForward
+  lives: {
+    iconComponent: DmFavorite,
+    tooltip: 'Number of lives you have'
+  },
+  gold: {
+    iconComponent: DmMoney,
+    tooltip: 'Amount of gold you have'
+  },
+  level: {
+    iconComponent: DmFace,
+    tooltip: 'Your current level'
+  },
+  score: {
+    iconComponent: DmChartOutlined,
+    tooltip: 'Current score'
+  },
+  highScore: {
+    iconComponent: DmChart,
+    tooltip: 'Highest score'
+  },
+  turn: {
+    iconComponent: DmForward,
+    tooltip: 'Current turn'
+  }
 };
 
 const filterHiddenStats = stat => {
@@ -47,10 +66,12 @@ const filterHiddenStats = stat => {
 
 const extendStats = stat => {
   const [name, value] = stat;
+  const { iconComponent, tooltip } = statComponentMap[name];
 
   return {
-    iconComponent: statComponentMap[name],
+    iconComponent,
     name,
+    tooltip,
     value
   };
 };
