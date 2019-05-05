@@ -36,6 +36,7 @@ import DmFace from '../../../../components/icons/round-face.svg';
 import DmFavorite from '../../../../components/icons/favorite.svg';
 import DmForward from '../../../../components/icons/forward.svg';
 import DmMoney from '../../../../components/icons/attach-money.svg';
+import tooltipDirective from '../../../../directives/tooltip';
 
 const statComponentMap = {
   lives: {
@@ -92,6 +93,9 @@ export default {
     DmFavorite,
     DmForward,
     DmMoney
+  },
+  directives: {
+    tooltip: tooltipDirective
   },
   props: {
     stats: {

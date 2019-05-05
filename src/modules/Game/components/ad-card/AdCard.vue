@@ -42,6 +42,7 @@
 import DmChartOutlined from '../../../../components/icons/insert-chart-outlined.svg';
 import DmHourglass from '../../../../components/icons/hourglass.svg';
 import DmMoney from '../../../../components/icons/attach-money.svg';
+import tooltip from '../../../../directives/tooltip';
 
 const getProbabilityTag = probability => {
   switch (probability) {
@@ -130,6 +131,9 @@ export default {
     DmChartOutlined,
     DmHourglass,
     DmMoney
+  },
+  directives: {
+    tooltip
   },
   props: {
     ad: {
