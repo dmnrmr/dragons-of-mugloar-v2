@@ -1,5 +1,6 @@
 import { fetchAds, fetchGame, fetchSolveAd } from '../../services/data-service';
 import LoadStatus from '../../constants';
+import notification from '../../../../services/notification';
 
 const getAds = (gameId, commit) =>
   fetchAds(gameId).then(({ data: ads }) => {
@@ -25,7 +26,9 @@ export const solveAd = ({ commit }, { gameId, adId }) => {
   return fetchSolveAd(gameId, adId)
     .then(({ data }) => {
       const { message, success, ...game } = data;
+      const notificator = success ? notification.success : notification.error;
 
+      notificator(message);
       commit('UPDATE_GAME', game);
 
       if (!game.lives) {

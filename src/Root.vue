@@ -9,6 +9,8 @@
         <router-view />
       </div>
     </section>
+
+    <notifications classes="notification" position="bottom right" />
   </div>
 </template>
 

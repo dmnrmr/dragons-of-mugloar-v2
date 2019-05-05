@@ -11,9 +11,14 @@ const dataService = {
   fetchAds: () => {},
   fetchSolveAd: () => {}
 };
+const notificationService = {
+  success: () => {},
+  error: () => {}
+};
 
 const actions = actionsInjector({
-  '../../services/data-service': dataService
+  '../../services/data-service': dataService,
+  '../../../../services/notification': notificationService
 });
 
 describe('Game actions', () => {
@@ -24,6 +29,8 @@ describe('Game actions', () => {
     sandbox.stub(dataService, 'fetchGame').resolves({ data: game });
     sandbox.stub(dataService, 'fetchAds').resolves({ data: ads });
     sandbox.stub(dataService, 'fetchSolveAd').resolves({ data: gameUpdate });
+    sandbox.spy(notificationService, 'success');
+    sandbox.spy(notificationService, 'error');
   });
 
   afterEach(() => {
@@ -116,6 +123,29 @@ describe('Game actions', () => {
     it('should start solving ad', () => {
       return solveAd().then(() => {
         expect(dataService.fetchSolveAd).to.have.been.calledWithExactly(gameId, adId);
+      });
+    });
+
+    it('should emit a success notification if ad is solved', () => {
+      return solveAd().then(() => {
+        expect(notificationService.success).to.have.been.calledWithExactly(
+          gameUpdate.message
+        );
+      });
+    });
+
+    it('should emit a error notification if ad is solved unsuccessfully', () => {
+      dataService.fetchSolveAd.resolves({
+        data: {
+          ...gameUpdate,
+          success: false
+        }
+      });
+
+      return solveAd().then(() => {
+        expect(notificationService.error).to.have.been.calledWithExactly(
+          gameUpdate.message
+        );
       });
     });
 

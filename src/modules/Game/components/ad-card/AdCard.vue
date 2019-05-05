@@ -43,46 +43,84 @@ import DmChartOutlined from '../../../../components/icons/insert-chart-outlined.
 import DmHourglass from '../../../../components/icons/hourglass.svg';
 import DmMoney from '../../../../components/icons/attach-money.svg';
 
-const probabilityTagMap = {
-  'Sure thing': {
-    probability: 98,
-    className: 'is-info'
-  },
-  'Piece of cake': {
-    probability: 97,
-    className: 'is-info'
-  },
-  'Walk in the park': {
-    probability: 88,
-    className: 'is-success'
-  },
-  'Hmmm....': {
-    probability: 79,
-    className: 'is-success'
-  },
-  'Quite likely': {
-    probability: 75,
-    className: 'is-warning'
-  },
-  Gamble: {
-    probability: 55,
-    className: 'is-warning'
-  },
-  Risky: {
-    probability: 46,
-    className: 'is-danger'
-  },
-  'Rather detrimental': {
-    probability: 34,
-    className: 'is-danger'
-  },
-  'Playing with fire': {
-    probability: 25,
-    className: 'is-black'
-  },
-  'Suicide mission': {
-    probability: 15,
-    className: 'is-black'
+const getProbabilityTag = probability => {
+  switch (probability) {
+    case 'Sure thing': {
+      return {
+        probability: 98,
+        className: 'is-info'
+      };
+    }
+
+    case 'Piece of cake': {
+      return {
+        probability: 97,
+        className: 'is-info'
+      };
+    }
+
+    case 'Walk in the park': {
+      return {
+        probability: 88,
+        className: 'is-success'
+      };
+    }
+
+    case 'Hmmm....': {
+      return {
+        probability: 79,
+        className: 'is-success'
+      };
+    }
+
+    case 'Quite likely': {
+      return {
+        probability: 75,
+        className: 'is-success'
+      };
+    }
+
+    case 'Gamble': {
+      return {
+        probability: 55,
+        className: 'is-warning'
+      };
+    }
+
+    case 'Risky': {
+      return {
+        probability: 46,
+        className: 'is-danger'
+      };
+    }
+
+    case 'Rather detrimental': {
+      return {
+        probability: 34,
+        className: 'is-danger'
+      };
+    }
+
+    case 'Playing with fire': {
+      return {
+        probability: 25,
+        className: 'is-black'
+      };
+    }
+
+    case 'Suicide mission': {
+      return {
+        probability: 15,
+        className: 'is-black'
+      };
+    }
+
+    default: {
+      return {
+        probability: 0,
+        className: 'is-light'
+      };
+    }
   }
 };
 
@@ -100,7 +138,7 @@ export default {
     }
   },
   computed: {
-    probabilityTag: ({ ad }) => probabilityTagMap[ad.probability]
+    probabilityTag: ({ ad }) => getProbabilityTag(ad.probability)
   },
   methods: {
     solve(adId) {
@@ -116,6 +154,7 @@ export default {
 
 section {
   height: 5rem;
+  word-break: break-all;
 
   @include until($widescreen) {
     height: 3rem;
