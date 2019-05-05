@@ -32,6 +32,10 @@ module.exports = merge(coreConfig, {
           { loader: 'css-loader' },
           { loader: 'sass-loader' }
         ]
+      },
+      {
+        test: /\.(png)$/,
+        use: [{ loader: 'file-loader' }]
       }
     ]
   },

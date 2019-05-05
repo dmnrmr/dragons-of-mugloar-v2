@@ -44,6 +44,7 @@
     ],
     "no-return-assign": "off",
     "no-unused-expressions": "off",
-    "vue/max-attributes-per-line": "off"
+    "vue/max-attributes-per-line": "off",
+    "vue/html-self-closing": "off"
   }
 }

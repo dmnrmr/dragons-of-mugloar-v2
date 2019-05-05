@@ -5,25 +5,27 @@ import LoadStatus from '../../constants';
 
 const actionsInjector = require('inject-loader!./index'); // eslint-disable-line
 
-const fetchGame = sinon.stub();
-const fetchAds = sinon.stub();
-const commit = sinon.spy();
+const dataService = {
+  fetchGame: () => {},
+  fetchAds: () => {}
+};
 
 const actions = actionsInjector({
-  '../../services/data-service': {
-    fetchGame,
-    fetchAds
-  }
+  '../../services/data-service': dataService
 });
 
 describe('Game actions', () => {
+  const sandbox = sinon.createSandbox();
+  const commit = sandbox.spy();
+
   beforeEach(() => {
-    fetchGame.resolves({ data: game });
-    fetchAds.resolves({ data: ads });
+    sandbox.stub(dataService, 'fetchGame').resolves({ data: game });
+    sandbox.stub(dataService, 'fetchAds').resolves({ data: ads });
   });
 
   afterEach(() => {
-    sinon.resetHistory();
+    sandbox.restore();
+    commit.resetHistory();
   });
 
   it('should commit game loading status before game is fetched', () => {
@@ -37,7 +39,7 @@ describe('Game actions', () => {
 
   it('should start fetching game', () => {
     return actions.startGame({ commit }).then(() => {
-      expect(fetchGame).to.have.been.called;
+      expect(dataService.fetchGame).to.have.been.called;
     });
   });
 
@@ -49,7 +51,7 @@ describe('Game actions', () => {
 
   it('should start fetching ads after game is fetched successfully', () => {
     return actions.startGame({ commit }).then(() => {
-      expect(fetchAds).to.have.been.calledWith(game.gameId);
+      expect(dataService.fetchAds).to.have.been.calledWith(game.gameId);
     });
   });
 
@@ -69,7 +71,7 @@ describe('Game actions', () => {
   });
 
   it('should commit game loading status after game is fetched unsuccessfully', () => {
-    fetchGame.rejects();
+    dataService.fetchGame.rejects();
 
     return actions.startGame({ commit }).then(() => {
       expect(commit.getCall(1)).to.have.been.calledWithExactly(
@@ -80,7 +82,7 @@ describe('Game actions', () => {
   });
 
   it('should commit game loading status after ads are fetched unsuccessfully', () => {
-    fetchAds.rejects();
+    dataService.fetchAds.rejects();
 
     return actions.startGame({ commit }).then(() => {
       expect(commit.getCall(2)).to.have.been.calledWithExactly(

@@ -2,8 +2,9 @@ import sinon from 'sinon';
 
 const dataServiceInjector = require('inject-loader!./data-service.js'); // eslint-disable-line
 
-const axiosGetSpy = sinon.spy();
-const axiosPostSpy = sinon.spy();
+const sandbox = sinon.createSandbox();
+const axiosGetSpy = sandbox.spy();
+const axiosPostSpy = sandbox.spy();
 
 const dataService = dataServiceInjector({
   axios: {

@@ -22,7 +22,7 @@ module.exports = merge(coreConfig, {
         ]
       },
       {
-        test: /\.(s?)css$/,
+        test: /\.(png|(s?)css)$/,
         use: [{ loader: 'null-loader' }]
       }
     ]

@@ -1,88 +1,52 @@
 <template>
-  <div class="home-page">
-    <h1 class="home-page__title">
-      Dragons of Mugloar 2
-    </h1>
+  <div class="columns is-vcentered">
+    <div class="column is-6">
+      <div class="section-header">
+        <h1 class="title is-spaced">
+          As a dragon trainer, find financial stability (or more)
+        </h1>
 
-    <nav class="home-page__navigation">
-      <dm-anchor-button
-        class="home-page__navigation-item"
-        :text="'Play game'"
-        :to="'/play'"
-      />
+        <h2 class="subtitle is-3">
+          Through completing tasks of varying complexity for fellow muglorians with the
+          assistance of your dragon.
+        </h2>
 
-      <dm-anchor-button
-        class="home-page__navigation-item"
-        :text="'About the game'"
-        :to="'/about'"
-      />
-    </nav>
+        <span @click="isLoading = true">
+          <router-link
+            class="button is-link is-medium"
+            to="/play"
+            :class="{ 'is-loading': isLoading }"
+          >
+            Start the game
+          </router-link>
+        </span>
+      </div>
+    </div>
+
+    <div class="column is-6">
+      <div class="section-media">
+        <div class="image"></div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 /* stylelint-disable */
-.home-page {
-  display: flex;
-  height: 100%;
-  padding: 1rem;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  &__title {
-    font-size: 6em;
-    line-height: 4rem;
-    text-transform: uppercase;
-  }
-
-  &__navigation {
-    padding-top: 2rem;
-
-    &-item {
-      margin-right: 2rem;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-
-  @media all and (max-width: 1199px) {
-    &__title {
-      text-transform: uppercase;
-      text-align: center;
-    }
-  }
-
-  @media all and (max-width: 575px) {
-    &__title {
-      font-size: 2rem;
-      line-height: normal;
-    }
-
-    &__navigation {
-      width: 100%;
-      padding-top: 1rem;
-
-      &-item {
-        margin-right: 0;
-        margin-bottom: 1rem;
-        width: 100%;
-      }
-    }
-  }
+.image {
+  background: center / contain no-repeat
+    url('../../../../assets/images/ambassadorOnPaper.png');
+  height: 0;
+  padding-bottom: 71%;
 }
 /* stylelint-enable */
 </style>
 
 <script>
-import DmAnchorButton from '../../../components/anchor-button/AnchorButton.vue';
-
 export default {
   name: 'DmHome',
-  components: {
-    DmAnchorButton
-  }
+  data: () => ({
+    isLoading: false
+  })
 };
 </script>

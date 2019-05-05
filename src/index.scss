@@ -1,44 +1,14 @@
+/* 3rd party styles */
 @import '~normalize.css';
 @import '~nprogress/nprogress.css';
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
+/* Bulma overrides */
+@import './styles/navigation-bar';
+@import './styles/box';
 
-body {
-  font: 0.8em / normal 'Open Sans', sans-serif;
-}
+/* Bulma */
+@import '~bulma/bulma';
 
-h1,
-h2,
-h3,
-h4,
-h5,
-p {
-  margin: 0;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-a {
-  color: inherit;
-}
-
-#content {
-  height: 100%;
-}
-
-#nprogress {
-  .bar {
-    background: black;
-  }
-
-  .peg {
-    display: none;
-  }
-}
+/* Internal global styles */
+@import './styles/global';
+@import './styles/progress-bar';
