@@ -9,7 +9,7 @@
 
       <div class="level-right">
         <div v-tooltip="'Ad reward'" class="level-item">
-          <dm-star />
+          <dm-money />
           <strong class="dm-ad-reward">{{ ad.reward }}</strong>
         </div>
 
@@ -37,7 +37,7 @@
 
 <script>
 import DmHourglass from '../../../../components/icons/hourglass.svg';
-import DmStar from '../../../../components/icons/star.svg';
+import DmMoney from '../../../../components/icons/attach-money.svg';
 
 const classNameMap = {
   'Sure thing': 'is-light',
@@ -55,7 +55,7 @@ export default {
   name: 'DmAdCard',
   components: {
     DmHourglass,
-    DmStar
+    DmMoney
   },
   props: {
     ad: {
