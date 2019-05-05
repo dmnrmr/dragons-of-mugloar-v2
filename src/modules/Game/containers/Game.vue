@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <template v-if="status === LoadStatus.Success">
-      <dm-game-stats :stats="game" />
+  <div class="game" :class="{ 'game--is-loading': isLoading }">
+    <template v-if="status !== LoadStatus.Fail">
+      <dm-game-stats :stats="game" :is-loading="isLoading" />
 
       <div class="columns is-multiline">
         <div
@@ -9,19 +9,40 @@
           :key="ad.adId"
           class="column is-one-quarter-widescreen is-half-desktop is-half-tablet"
         >
-          <dm-ad-card :ad="ad" @ad-take-action="adTakeAction($event)" />
+          <dm-ad-card
+            :ad="ad"
+            @ad-solve="solveAd({ gameId: game.gameId, adId: $event })"
+          />
         </div>
       </div>
     </template>
 
-    <p v-else class="game-load-error">
+    <p v-if="status === LoadStatus.Fail" class="game-load-error">
       There was an error loading game.
     </p>
   </div>
 </template>
 
+<style lang="scss" scoped>
+/* stylelint-disable */
+.game {
+  position: relative;
+
+  &--is-loading:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+  }
+}
+/* stylelint-enable */
+</style>
+
 <script>
-import { mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import LoadStatus from '../constants';
 import DmAdCard from '../components/ad-card/AdCard.vue';
 import DmGameStats from '../components/game-stats/GameStats.vue';
@@ -34,13 +55,13 @@ export default {
   },
   data: () => ({ LoadStatus }),
   computed: {
-    ...mapState('game', ['status', 'game', 'ads'])
+    ...mapState('game', ['status', 'game', 'ads']),
+    isLoading() {
+      return this.status === LoadStatus.Loading;
+    }
   },
   methods: {
-    adTakeAction(adId) {
-      // eslint-disable-next-line
-      console.log('** Ad take action on', adId);
-    }
+    ...mapActions('game', ['solveAd'])
   }
 };
 </script>

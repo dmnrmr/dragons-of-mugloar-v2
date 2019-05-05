@@ -12,15 +12,22 @@
       </div>
     </div>
 
-    <div class="level-right">
+    <div v-show="isLoading" class="level-right">
       <div class="level-item">
-        <button class="button is-small is-fullwidth is-outlined is-link" disabled>
-          Restart the game
-        </button>
+        <span class="loader"></span>
+        <span class="has-padding-left-5">In progress...</span>
       </div>
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+/* stylelint-disable */
+.has-padding-left-5 {
+  padding-left: 5px;
+}
+/* stylelint-enable */
+</style>
 
 <script>
 import DmChart from '../../../../components/icons/insert-chart.svg';
@@ -89,6 +96,10 @@ export default {
   props: {
     stats: {
       type: Object,
+      required: true
+    },
+    isLoading: {
+      type: Boolean,
       required: true
     }
   },

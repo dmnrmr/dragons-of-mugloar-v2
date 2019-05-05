@@ -2,9 +2,12 @@ import { shallowMount } from '@vue/test-utils';
 import GameStats from './GameStats.vue';
 import game from '../../../../../test/fixtures/game.json';
 
-describe('AdCard component', () => {
+describe('Game stats component', () => {
   const wrapper = shallowMount(GameStats, {
-    propsData: { stats: game }
+    propsData: {
+      stats: game,
+      isLoading: false
+    }
   });
 
   it('should render only visible game stats', () => {
@@ -47,5 +50,19 @@ describe('AdCard component', () => {
     const statRef = wrapper.find('.stat--turn');
 
     expect(statRef.text()).to.equal(String(game.turn));
+  });
+
+  it('should not display loading indicator', () => {
+    const levelRightRef = wrapper.find('.level-right');
+
+    expect(levelRightRef.isVisible()).to.be.false;
+  });
+
+  it('should display loading indicator', () => {
+    wrapper.setProps({ isLoading: true });
+
+    const levelRightRef = wrapper.find('.level-right');
+
+    expect(levelRightRef.isVisible()).to.be.true;
   });
 });

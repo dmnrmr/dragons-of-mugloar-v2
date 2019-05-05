@@ -1,17 +1,38 @@
-import { fetchGame, fetchAds } from '../../services/data-service';
+import { fetchAds, fetchGame, fetchSolveAd } from '../../services/data-service';
 import LoadStatus from '../../constants';
 
+const getAds = (gameId, commit) =>
+  fetchAds(gameId).then(({ data: ads }) => {
+    commit('STORE_ADS', ads);
+    commit('STORE_GAME_LOADING_STATUS', { status: LoadStatus.Success });
+  });
+
 export const startGame = ({ commit }) => {
-  commit('STORE_GAME_LOADING_STATUS', LoadStatus.Loading);
+  commit('STORE_GAME_LOADING_STATUS', { status: LoadStatus.Loading });
 
   return fetchGame()
     .then(({ data: game }) => {
       commit('STORE_GAME', game);
 
-      return fetchAds(game.gameId).then(({ data: ads }) => {
-        commit('STORE_ADS', ads);
-        commit('STORE_GAME_LOADING_STATUS', LoadStatus.Success);
-      });
+      return getAds(game.gameId, commit);
     })
-    .catch(() => commit('STORE_GAME_LOADING_STATUS', LoadStatus.Fail));
+    .catch(() => commit('STORE_GAME_LOADING_STATUS', { status: LoadStatus.Fail }));
+};
+
+export const solveAd = ({ commit }, { gameId, adId }) => {
+  commit('STORE_GAME_LOADING_STATUS', { status: LoadStatus.Loading });
+
+  return fetchSolveAd(gameId, adId)
+    .then(({ data }) => {
+      const { message, success, ...game } = data;
+
+      commit('UPDATE_GAME', game);
+
+      if (!game.lives) {
+        return commit('GAME_OVER');
+      }
+
+      return getAds(gameId, commit);
+    })
+    .catch(e => commit('STORE_GAME_LOADING_STATUS', { status: LoadStatus.Fail, e }));
 };

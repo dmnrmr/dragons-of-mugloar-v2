@@ -9,6 +9,7 @@
 
       <div class="level-right">
         <div v-tooltip="'Ad reward'" class="level-item">
+          <dm-chart-outlined />
           <dm-money />
           <strong class="dm-ad-reward">{{ ad.reward }}</strong>
         </div>
@@ -26,16 +27,17 @@
 
     <footer>
       <button
-        class="button is-small is-fullwidth is-outlined is-link dm-ad-take-action"
-        @click="takeAction(ad.adId)"
+        class="button is-small is-fullwidth is-outlined is-link dm-ad-solve"
+        @click="solve(ad.adId)"
       >
-        Take action
+        Solve
       </button>
     </footer>
   </div>
 </template>
 
 <script>
+import DmChartOutlined from '../../../../components/icons/insert-chart-outlined.svg';
 import DmHourglass from '../../../../components/icons/hourglass.svg';
 import DmMoney from '../../../../components/icons/attach-money.svg';
 
@@ -54,6 +56,7 @@ const classNameMap = {
 export default {
   name: 'DmAdCard',
   components: {
+    DmChartOutlined,
     DmHourglass,
     DmMoney
   },
@@ -67,8 +70,8 @@ export default {
     className: ({ ad }) => classNameMap[ad.probability]
   },
   methods: {
-    takeAction(adId) {
-      this.$emit('ad-take-action', adId);
+    solve(adId) {
+      this.$emit('ad-solve', adId);
     }
   }
 };

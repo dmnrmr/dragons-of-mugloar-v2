@@ -26,7 +26,7 @@ describe('Tooltip directive', () => {
   it('should instantiate tippy on bind', () => {
     const wrapper = shallowMount(DummyComponent, { localVue });
 
-    expect(tippy).to.have.been.calledWith(wrapper.vm.$el, {
+    expect(tippy).to.have.been.calledWithExactly(wrapper.vm.$el, {
       animateFill: false,
       animation: 'fade',
       content: tooltipContent

@@ -16,11 +16,15 @@ const dataService = dataServiceInjector({
 });
 
 describe('Data service', () => {
+  afterEach(() => {
+    sandbox.resetHistory();
+  });
+
   describe('Fetch game', () => {
     it('should send a post request to start a game', () => {
       dataService.fetchGame();
 
-      expect(axiosPostSpy).to.have.been.calledWith('/api/v2/game/start');
+      expect(axiosPostSpy).to.have.been.calledWithExactly('/api/v2/game/start');
     });
   });
 
@@ -30,7 +34,20 @@ describe('Data service', () => {
 
       dataService.fetchAds(gameId);
 
-      expect(axiosGetSpy).to.have.been.calledWith(`/api/v2/${gameId}/messages`);
+      expect(axiosGetSpy).to.have.been.calledWithExactly(`/api/v2/${gameId}/messages`);
+    });
+  });
+
+  describe('Fetch solve ad', () => {
+    it('should send a post request to solve game', () => {
+      const gameId = 'foo';
+      const adId = 'bar';
+
+      dataService.fetchSolveAd(gameId, adId);
+
+      expect(axiosPostSpy).to.have.been.calledWithExactly(
+        `/api/v2/${gameId}/solve/${adId}`
+      );
     });
   });
 });

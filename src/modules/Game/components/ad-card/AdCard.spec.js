@@ -122,11 +122,11 @@ describe('AdCard component', () => {
     });
   });
 
-  describe('Take action', () => {
+  describe('Solve', () => {
     it('should emit event with ad id when taking action', () => {
-      wrapper.find('.dm-ad-take-action').trigger('click');
+      wrapper.find('.dm-ad-solve').trigger('click');
 
-      const [[event]] = wrapper.emitted()['ad-take-action'];
+      const [[event]] = wrapper.emitted()['ad-solve'];
 
       expect(event).to.equal(ad.adId);
     });
