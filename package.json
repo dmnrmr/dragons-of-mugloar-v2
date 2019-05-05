@@ -19,7 +19,7 @@
     "url": "git+https://github.com/dmnrmr/dragons-of-mugloar-v2.git"
   },
   "author": "Leonid Blinov <dmnrmr@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/dmnrmr/dragons-of-mugloar-v2/issues"
   },
