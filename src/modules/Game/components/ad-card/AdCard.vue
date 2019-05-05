@@ -3,7 +3,9 @@
     <div class="level">
       <div class="level-left">
         <div class="lever-item">
-          <span class="tag" :class="className">{{ ad.probability }}</span>
+          <span v-tooltip="ad.probability" class="tag" :class="probabilityTag.className">
+            ~{{ probabilityTag.probability }}%
+          </span>
         </div>
       </div>
 
@@ -41,16 +43,47 @@ import DmChartOutlined from '../../../../components/icons/insert-chart-outlined.
 import DmHourglass from '../../../../components/icons/hourglass.svg';
 import DmMoney from '../../../../components/icons/attach-money.svg';
 
-const classNameMap = {
-  'Sure thing': 'is-light',
-  'Piece of cake': 'is-info',
-  'Quite likely': 'is-link',
-  'Walk in the park': 'is-primary',
-  Gamble: 'is-success',
-  Risky: 'is-warning',
-  'Playing with fire': 'is-danger',
-  'Hmmm....': 'is-dark',
-  'Suicide mission': 'is-black'
+const probabilityTagMap = {
+  'Sure thing': {
+    probability: 98,
+    className: 'is-info'
+  },
+  'Piece of cake': {
+    probability: 97,
+    className: 'is-info'
+  },
+  'Walk in the park': {
+    probability: 88,
+    className: 'is-success'
+  },
+  'Hmmm....': {
+    probability: 79,
+    className: 'is-success'
+  },
+  'Quite likely': {
+    probability: 75,
+    className: 'is-warning'
+  },
+  Gamble: {
+    probability: 55,
+    className: 'is-warning'
+  },
+  Risky: {
+    probability: 46,
+    className: 'is-danger'
+  },
+  'Rather detrimental': {
+    probability: 34,
+    className: 'is-danger'
+  },
+  'Playing with fire': {
+    probability: 25,
+    className: 'is-black'
+  },
+  'Suicide mission': {
+    probability: 15,
+    className: 'is-black'
+  }
 };
 
 export default {
@@ -67,7 +100,7 @@ export default {
     }
   },
   computed: {
-    className: ({ ad }) => classNameMap[ad.probability]
+    probabilityTag: ({ ad }) => probabilityTagMap[ad.probability]
   },
   methods: {
     solve(adId) {

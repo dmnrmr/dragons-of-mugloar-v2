@@ -15,70 +15,31 @@ describe('AdCard component', () => {
   });
 
   describe('Probability tag', () => {
-    it('should render "unknown" probability tag without color class name', () => {
-      wrapper.setProps({ ad: getAdWithProbability('unknown') });
-
-      const tagRef = wrapper.find('.tag');
-
-      expect(tagRef.classes())
-        .to.have.lengthOf(1)
-        .and.to.contain('tag');
-    });
-
-    it('should render "Sure thing" probability tag with correct color class name', () => {
+    it('should render "Sure thing" probability tag', () => {
       wrapper.setProps({ ad: getAdWithProbability('Sure thing') });
 
       const tagRef = wrapper.find('.tag');
 
-      expect(tagRef.classes()).to.contain('is-light');
+      expect(tagRef.classes()).to.contain('is-info');
+      expect(tagRef.text()).to.be.equal('~98%');
     });
 
-    it('should render "Piece of cake" probability tag with correct color class name', () => {
+    it('should render "Piece of cake" probability tag', () => {
       wrapper.setProps({ ad: getAdWithProbability('Piece of cake') });
 
       const tagRef = wrapper.find('.tag');
 
       expect(tagRef.classes()).to.contain('is-info');
+      expect(tagRef.text()).to.be.equal('~97%');
     });
 
-    it('should render "Quite likely" probability tag with correct color class name', () => {
-      wrapper.setProps({ ad: getAdWithProbability('Quite likely') });
-
-      const tagRef = wrapper.find('.tag');
-
-      expect(tagRef.classes()).to.contain('is-link');
-    });
-
-    it('should render "Walk in the park" probability tag with correct color class name', () => {
+    it('should render "Walk in the park" probability tag', () => {
       wrapper.setProps({ ad: getAdWithProbability('Walk in the park') });
 
       const tagRef = wrapper.find('.tag');
 
-      expect(tagRef.classes()).to.contain('is-primary');
-    });
-
-    it('should render "Gamble" probability tag with correct color class name', () => {
-      wrapper.setProps({ ad: getAdWithProbability('Gamble') });
-
-      const tagRef = wrapper.find('.tag');
-
       expect(tagRef.classes()).to.contain('is-success');
-    });
-
-    it('should render "Risky" probability tag with correct color class name', () => {
-      wrapper.setProps({ ad: getAdWithProbability('Risky') });
-
-      const tagRef = wrapper.find('.tag');
-
-      expect(tagRef.classes()).to.contain('is-warning');
-    });
-
-    it('should render "Playing with fire" probability tag with correct color class name', () => {
-      wrapper.setProps({ ad: getAdWithProbability('Playing with fire') });
-
-      const tagRef = wrapper.find('.tag');
-
-      expect(tagRef.classes()).to.contain('is-danger');
+      expect(tagRef.text()).to.be.equal('~88%');
     });
 
     it('should render "Hmmm...." probability tag with correct color class name', () => {
@@ -86,15 +47,62 @@ describe('AdCard component', () => {
 
       const tagRef = wrapper.find('.tag');
 
-      expect(tagRef.classes()).to.contain('is-dark');
+      expect(tagRef.classes()).to.contain('is-success');
+      expect(tagRef.text()).to.be.equal('~79%');
     });
 
-    it('should render "Suicide mission" probability tag with correct color class name', () => {
+    it('should render "Quite likely" probability tag', () => {
+      wrapper.setProps({ ad: getAdWithProbability('Quite likely') });
+
+      const tagRef = wrapper.find('.tag');
+
+      expect(tagRef.classes()).to.contain('is-warning');
+      expect(tagRef.text()).to.be.equal('~75%');
+    });
+
+    it('should render "Gamble" probability tag', () => {
+      wrapper.setProps({ ad: getAdWithProbability('Gamble') });
+
+      const tagRef = wrapper.find('.tag');
+
+      expect(tagRef.classes()).to.contain('is-warning');
+      expect(tagRef.text()).to.be.equal('~55%');
+    });
+
+    it('should render "Risky" probability tag', () => {
+      wrapper.setProps({ ad: getAdWithProbability('Risky') });
+
+      const tagRef = wrapper.find('.tag');
+
+      expect(tagRef.classes()).to.contain('is-danger');
+      expect(tagRef.text()).to.be.equal('~46%');
+    });
+
+    it('should render "Rather detrimental" probability tag', () => {
+      wrapper.setProps({ ad: getAdWithProbability('Rather detrimental') });
+
+      const tagRef = wrapper.find('.tag');
+
+      expect(tagRef.classes()).to.contain('is-danger');
+      expect(tagRef.text()).to.be.equal('~34%');
+    });
+
+    it('should render "Playing with fire" probability tag with correct color class name', () => {
+      wrapper.setProps({ ad: getAdWithProbability('Playing with fire') });
+
+      const tagRef = wrapper.find('.tag');
+
+      expect(tagRef.classes()).to.contain('is-black');
+      expect(tagRef.text()).to.be.equal('~25%');
+    });
+
+    it('should render "Suicide mission" probability tag', () => {
       wrapper.setProps({ ad: getAdWithProbability('Suicide mission') });
 
       const tagRef = wrapper.find('.tag');
 
       expect(tagRef.classes()).to.contain('is-black');
+      expect(tagRef.text()).to.be.equal('~15%');
     });
   });
 
