@@ -1,6 +1,5 @@
 /* 3rd party styles */
 @import '~normalize.css';
-@import '~nprogress/nprogress.css';
 
 /* Bulma overrides */
 @import './styles/navigation-bar';
@@ -12,4 +11,4 @@
 
 /* Internal global styles */
 @import './styles/global';
-@import './styles/progress-bar';
+@import './styles/nprogress';

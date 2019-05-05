@@ -12,7 +12,7 @@ The purpose of this project is to try/learn new stuff by solving real world prob
 
 ## Demo
 
-Working demo could be found [here](https://dom2.commons.host/)\*\
+Working demo could be found [here](https://dom2.lblinov.dev/)\*\
 \*please be aware that it is still a work in progress
 
 ## Installation
