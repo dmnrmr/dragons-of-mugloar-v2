@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.15.3
+    working_directory: ~/app
     steps:
       - checkout
       - run:
@@ -17,9 +18,35 @@ jobs:
       - run:
           name: Build project
           command: npm run build
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - dist
+  deploy:
+    docker:
+      - image: circleci/node:10.15.3
+    working_directory: ~/app
+    steps:
+      - attach_workspace:
+          at: ./
+      - add_ssh_keys:
+          fingerprints:
+            - '12:83:5c:16:4b:f5:99:87:84:5a:57:0b:0b:0b:1d:c3'
       - run:
-          name: Commons.host authenticate
-          command: npx commonshost signin --username ${COMMONSHOST_USERNAME} --password ${COMMONSHOST_PASSWORD}
+          name: Add to known hosts
+          command: ssh-keyscan -H $DOM2_HOST >> ~/.ssh/known_hosts
       - run:
-          name: Deploy
-          command: npm run deploy
+          name: Remove existing files
+          command: ssh "$DOM2_USER@$DOM2_HOST" "rm -rf /var/www/$DOM2_SITE_DIR/html/*"
+      - run:
+          name: Copy build files
+          command: scp -r dist/* "$DOM2_USER@$DOM2_HOST:/var/www/$DOM2_SITE_DIR/html"
+
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
