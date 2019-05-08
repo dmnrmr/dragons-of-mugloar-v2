@@ -1,5 +1,5 @@
 <template>
-  <div class="level">
+  <div class="level is-mobile">
     <div class="level-left">
       <div
         v-for="(stat, index) in gameStats"

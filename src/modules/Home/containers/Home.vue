@@ -13,7 +13,7 @@
 
         <span @click="isLoading = true">
           <router-link
-            class="button is-link is-medium"
+            class="button is-link is-medium play-game"
             to="/play"
             :class="{ 'is-loading': isLoading }"
           >
@@ -33,11 +33,19 @@
 
 <style lang="scss" scoped>
 /* stylelint-disable */
+@import '~bulma/sass/utilities/mixins';
+
 .image {
   background: center / contain no-repeat
     url('../../../../assets/images/ambassadorOnPaper.png');
   height: 0;
   padding-bottom: 71%;
+}
+
+@include mobile {
+  .play-game {
+    width: 100%;
+  }
 }
 /* stylelint-enable */
 </style>

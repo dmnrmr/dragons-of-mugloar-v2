@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <div class="level">
+    <div class="level is-mobile">
       <div class="level-left">
         <div class="lever-item">
           <span v-tooltip="ad.probability" class="tag" :class="probabilityTag.className">
@@ -30,6 +30,7 @@
     <footer>
       <button
         class="button is-small is-fullwidth is-outlined is-link dm-ad-solve"
+        :disabled="ad.encrypted"
         @click="solve(ad.adId)"
       >
         Solve
@@ -161,12 +162,7 @@ section {
   word-break: break-all;
 
   @include until($widescreen) {
-    height: 3rem;
-  }
-
-  @include mobile {
-    min-height: 2rem;
-    height: 100%;
+    height: 3.5rem;
   }
 }
 /* stylelint-enable */
