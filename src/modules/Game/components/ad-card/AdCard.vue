@@ -39,6 +39,31 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+/* stylelint-disable */
+@import '~bulma/sass/utilities/mixins';
+
+section {
+  height: 5rem;
+  word-break: break-all;
+
+  @include until($widescreen) {
+    height: 3.5rem;
+  }
+
+  @include until($widescreen) {
+    height: 3.5rem;
+  }
+
+  @include until($tablet) {
+    height: auto;
+    padding-bottom: 1rem;
+    word-break: initial;
+  }
+}
+/* stylelint-enable */
+</style>
+
 <script>
 import DmChartOutlined from '../../../../components/icons/insert-chart-outlined.svg';
 import DmHourglass from '../../../../components/icons/hourglass.svg';
@@ -152,18 +177,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-/* stylelint-disable */
-@import '~bulma/sass/utilities/mixins';
-
-section {
-  height: 5rem;
-  word-break: break-all;
-
-  @include until($widescreen) {
-    height: 3.5rem;
-  }
-}
-/* stylelint-enable */
-</style>

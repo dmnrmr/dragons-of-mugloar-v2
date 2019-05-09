@@ -15,7 +15,7 @@
     <div v-show="isLoading" class="level-right">
       <div class="level-item">
         <span class="loader"></span>
-        <span class="has-padding-left-5">In progress...</span>
+        <span class="loader-text">In progress...</span>
       </div>
     </div>
   </div>
@@ -23,8 +23,14 @@
 
 <style lang="scss" scoped>
 /* stylelint-disable */
-.has-padding-left-5 {
+@import '~bulma/sass/utilities/mixins';
+
+.loader-text {
   padding-left: 5px;
+
+  @include mobile {
+    display: none;
+  }
 }
 /* stylelint-enable */
 </style>
