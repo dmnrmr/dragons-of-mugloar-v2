@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h1>About</h1>
-
     <p>
       <span>This is a solution for a second version of </span>
       <a

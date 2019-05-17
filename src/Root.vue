@@ -4,9 +4,11 @@
       <dm-navigation-bar />
     </header>
 
-    <section class="is-hero section">
-      <div class="container">
-        <router-view />
+    <section class="hero section is-fullheight-with-navbar">
+      <div class="hero-body">
+        <div class="container">
+          <router-view />
+        </div>
       </div>
     </section>
 
