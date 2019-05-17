@@ -40,7 +40,6 @@
 </template>
 
 <style lang="scss" scoped>
-/* stylelint-disable */
 @import '~bulma/sass/utilities/mixins';
 
 section {
@@ -61,7 +60,6 @@ section {
     word-break: initial;
   }
 }
-/* stylelint-enable */
 </style>
 
 <script>

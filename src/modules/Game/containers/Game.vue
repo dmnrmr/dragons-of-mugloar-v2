@@ -24,7 +24,6 @@
 </template>
 
 <style lang="scss" scoped>
-/* stylelint-disable */
 .game {
   position: relative;
 
@@ -38,7 +37,6 @@
     background-color: transparent;
   }
 }
-/* stylelint-enable */
 </style>
 
 <script>

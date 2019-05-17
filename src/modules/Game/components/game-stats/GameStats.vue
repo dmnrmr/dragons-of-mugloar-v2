@@ -22,7 +22,6 @@
 </template>
 
 <style lang="scss" scoped>
-/* stylelint-disable */
 @import '~bulma/sass/utilities/mixins';
 
 .loader-text {
@@ -32,7 +31,6 @@
     display: none;
   }
 }
-/* stylelint-enable */
 </style>
 
 <script>

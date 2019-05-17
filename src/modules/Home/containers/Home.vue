@@ -32,12 +32,13 @@
 </template>
 
 <style lang="scss" scoped>
-/* stylelint-disable */
 @import '~bulma/sass/utilities/mixins';
 
 .image {
-  background: center / contain no-repeat
-    url('../../../../assets/images/ambassadorOnPaper.png');
+  background-image: url('../../../../assets/images/ambassadorOnPaper.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   height: 0;
   padding-bottom: 71%;
 }
@@ -47,7 +48,6 @@
     width: 100%;
   }
 }
-/* stylelint-enable */
 </style>
 
 <script>
