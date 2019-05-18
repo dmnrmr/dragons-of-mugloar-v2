@@ -4,7 +4,7 @@ const notify = (type, text) => {
   Vue.notify({
     type,
     text,
-    duration: 750
+    duration: 1000
   });
 };
 

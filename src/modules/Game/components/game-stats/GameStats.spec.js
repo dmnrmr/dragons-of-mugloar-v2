@@ -5,8 +5,7 @@ import game from '../../../../../test/fixtures/game.json';
 describe('Game stats component', () => {
   const wrapper = shallowMount(GameStats, {
     propsData: {
-      stats: game,
-      isLoading: false
+      stats: game
     }
   });
 
@@ -50,19 +49,5 @@ describe('Game stats component', () => {
     const statRef = wrapper.find('.stat--turn');
 
     expect(statRef.text()).to.equal(String(game.turn));
-  });
-
-  it('should not display loading indicator', () => {
-    const levelRightRef = wrapper.find('.level-right');
-
-    expect(levelRightRef.isVisible()).to.be.false;
-  });
-
-  it('should display loading indicator', () => {
-    wrapper.setProps({ isLoading: true });
-
-    const levelRightRef = wrapper.find('.level-right');
-
-    expect(levelRightRef.isVisible()).to.be.true;
   });
 });

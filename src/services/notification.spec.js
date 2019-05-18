@@ -14,7 +14,7 @@ describe('Notification service', () => {
   const sandbox = sinon.createSandbox();
   const defaultPayload = {
     text: 'Fusce rutrum magna vehicula risus facilisis, finibus feugiat amet.',
-    duration: 750
+    duration: 1000
   };
 
   beforeEach(() => {

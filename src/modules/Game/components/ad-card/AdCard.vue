@@ -44,7 +44,6 @@
 
 section {
   height: 5rem;
-  word-break: break-all;
 
   @include until($widescreen) {
     height: 3.5rem;

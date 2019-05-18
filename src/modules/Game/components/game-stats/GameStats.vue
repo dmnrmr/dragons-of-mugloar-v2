@@ -12,10 +12,9 @@
       </div>
     </div>
 
-    <div v-show="isLoading" class="level-right">
+    <div class="level-right">
       <div class="level-item">
-        <span class="loader"></span>
-        <span class="loader-text">In progress...</span>
+        shop
       </div>
     </div>
   </div>
@@ -104,10 +103,6 @@ export default {
   props: {
     stats: {
       type: Object,
-      required: true
-    },
-    isLoading: {
-      type: Boolean,
       required: true
     }
   },

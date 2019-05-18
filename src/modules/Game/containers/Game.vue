@@ -1,7 +1,9 @@
 <template>
   <div class="game" :class="{ 'game--is-loading': isLoading }">
+    <span class="game__loader loader"></span>
+
     <template v-if="status !== LoadStatus.Fail">
-      <dm-game-stats :stats="game" :is-loading="isLoading" />
+      <dm-game-stats :stats="game" />
 
       <div class="columns is-multiline">
         <div
@@ -24,8 +26,18 @@
 </template>
 
 <style lang="scss" scoped>
+$loader-padding: 3rem;
+
 .game {
   position: relative;
+
+  &__loader {
+    display: none;
+    position: absolute;
+    top: calc(50% - #{$loader-padding});
+    left: calc(50% - #{$loader-padding});
+    padding: $loader-padding;
+  }
 
   &--is-loading:after {
     content: '';
@@ -34,7 +46,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &--is-loading &__loader {
+    display: block;
   }
 }
 </style>
