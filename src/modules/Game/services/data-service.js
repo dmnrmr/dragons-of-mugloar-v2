@@ -6,7 +6,7 @@ const client = axios.create({
     Accept: 'application/json',
     'Content-Type': 'application/json'
   },
-  timeout: 2000
+  timeout: 5000
 });
 
 export const fetchGame = () => client.post('/api/v2/game/start');
