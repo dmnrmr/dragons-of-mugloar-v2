@@ -33,12 +33,12 @@
 </style>
 
 <script>
-import DmChart from '../../../../components/icons/insert-chart.svg';
-import DmChartOutlined from '../../../../components/icons/insert-chart-outlined.svg';
-import DmFace from '../../../../components/icons/round-face.svg';
+import DmChart from '../../../../components/icons/chart.svg';
+import DmChartOutlined from '../../../../components/icons/chart-outlined.svg';
+import DmFace from '../../../../components/icons/face.svg';
 import DmFavorite from '../../../../components/icons/favorite.svg';
 import DmForward from '../../../../components/icons/forward.svg';
-import DmMoney from '../../../../components/icons/attach-money.svg';
+import DmMoney from '../../../../components/icons/money.svg';
 import tooltipDirective from '../../../../directives/tooltip';
 
 const statComponentMap = {

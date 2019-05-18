@@ -62,9 +62,9 @@ section {
 </style>
 
 <script>
-import DmChartOutlined from '../../../../components/icons/insert-chart-outlined.svg';
+import DmChartOutlined from '../../../../components/icons/chart-outlined.svg';
 import DmHourglass from '../../../../components/icons/hourglass.svg';
-import DmMoney from '../../../../components/icons/attach-money.svg';
+import DmMoney from '../../../../components/icons/money.svg';
 import tooltip from '../../../../directives/tooltip';
 
 const getProbabilityTag = probability => {
