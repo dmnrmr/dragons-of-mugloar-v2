@@ -1,11 +1,12 @@
 import LoadStatus from '../constants';
-import { startGame, solveAd } from './actions';
+import { buyItem, startGame, solveAd } from './actions';
 import {
+  GAME_OVER,
+  STORE_ADS,
   STORE_GAME_LOADING_STATUS,
   STORE_GAME,
-  STORE_ADS,
-  UPDATE_GAME,
-  GAME_OVER
+  STORE_ITEMS,
+  UPDATE_GAME
 } from './mutations';
 
 const store = {
@@ -13,19 +14,22 @@ const store = {
   state: {
     status: LoadStatus.Initial,
     game: {},
-    ads: []
+    ads: [],
+    items: []
   },
   getters: {},
   actions: {
+    buyItem,
     startGame,
     solveAd
   },
   mutations: {
+    GAME_OVER,
+    STORE_ADS,
     STORE_GAME_LOADING_STATUS,
     STORE_GAME,
-    STORE_ADS,
-    UPDATE_GAME,
-    GAME_OVER
+    STORE_ITEMS,
+    UPDATE_GAME
   }
 };
 

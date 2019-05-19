@@ -3,10 +3,12 @@ import { createLocalVue, shallowMount } from '@vue/test-utils';
 import sinon from 'sinon';
 import Game from './Game.vue';
 import LoadStatus from '../constants';
-import DmGameStats from '../components/game-stats/GameStats.vue';
 import DmAdCard from '../components/ad-card/AdCard.vue';
-import game from '../../../../test/fixtures/game.json';
+import DmGameStats from '../components/game-stats/GameStats.vue';
+import DmItemShop from '../components/item-shop/ItemShop.vue';
 import ads from '../../../../test/fixtures/ads.json';
+import game from '../../../../test/fixtures/game.json';
+import shopItems from '../../../../test/fixtures/shopItems.json';
 
 const localVue = createLocalVue();
 const sandbox = sinon.createSandbox();
@@ -14,6 +16,7 @@ const sandbox = sinon.createSandbox();
 localVue.use(Vuex);
 
 const actions = {
+  buyItem: sandbox.spy(),
   solveAd: sandbox.spy()
 };
 
@@ -25,7 +28,8 @@ const createMockedStore = (status = LoadStatus.Success) =>
         state: {
           status,
           game,
-          ads
+          ads,
+          items: shopItems
         },
         actions
       }
@@ -47,6 +51,21 @@ describe('Game page component', () => {
     const { stats } = statsRef.props();
 
     expect(stats).to.equal(game);
+  });
+
+  it('should pass gold amount to item shop component', () => {
+    const shopRef = reusableWrapper.find(DmItemShop);
+    const { gold } = shopRef.props();
+
+    expect(gold).to.equal(game.gold);
+  });
+
+  it('should pass items to item shop component', () => {
+    const shopRef = reusableWrapper.find(DmItemShop);
+    const { items } = shopRef.props();
+
+    expect(items).to.be.an('array');
+    expect(items).to.have.lengthOf(items.length);
   });
 
   it('should render ad list', () => {
@@ -98,5 +117,17 @@ describe('Game page component', () => {
     const gameRef = wrapper.find('.game');
 
     expect(gameRef.classes()).to.contain('game--is-loading');
+  });
+
+  it('should trigger item buying action', () => {
+    const shopRef = reusableWrapper.find(DmItemShop);
+    const itemId = 'foo';
+
+    shopRef.vm.$emit('item-buy', itemId);
+
+    expect(actions.buyItem.getCall(0).args[1]).to.deep.equal({
+      gameId: game.gameId,
+      itemId
+    });
   });
 });

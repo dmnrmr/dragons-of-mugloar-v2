@@ -28,13 +28,23 @@ describe('Data service', () => {
     });
   });
 
-  describe('Fetch messages', () => {
+  describe('Fetch ads', () => {
     it('should send a get request to fetch ads', () => {
       const gameId = 'foo';
 
       dataService.fetchAds(gameId);
 
       expect(axiosGetSpy).to.have.been.calledWithExactly(`/api/v2/${gameId}/messages`);
+    });
+  });
+
+  describe('Fetch shop items', () => {
+    it('should send a get request to fetch items', () => {
+      const gameId = 'foo';
+
+      dataService.fetchItems(gameId);
+
+      expect(axiosGetSpy).to.have.been.calledWithExactly(`/api/v2/${gameId}/shop`);
     });
   });
 
@@ -47,6 +57,19 @@ describe('Data service', () => {
 
       expect(axiosPostSpy).to.have.been.calledWithExactly(
         `/api/v2/${gameId}/solve/${adId}`
+      );
+    });
+  });
+
+  describe('Fetch buy an item', () => {
+    it('should send a post request to buy an item', () => {
+      const gameId = 'foo';
+      const itemId = 'bar';
+
+      dataService.fetchBuyItem(gameId, itemId);
+
+      expect(axiosPostSpy).to.have.been.calledWithExactly(
+        `/api/v2/${gameId}/shop/buy/${itemId}`
       );
     });
   });

@@ -3,12 +3,14 @@ import {
   STORE_ADS,
   STORE_GAME_LOADING_STATUS,
   STORE_GAME,
+  STORE_ITEMS,
   UPDATE_GAME
 } from './index';
-import LoadStatus from '../../constants';
-import game from '../../../../../test/fixtures/game.json';
-import gameUpdate from '../../../../../test/fixtures/gameUpdate.json';
 import ads from '../../../../../test/fixtures/ads.json';
+import game from '../../../../../test/fixtures/game.json';
+import items from '../../../../../test/fixtures/shopItems.json';
+import solvedAdUpdate from '../../../../../test/fixtures/solveAd.json';
+import LoadStatus from '../../constants';
 
 describe('Game mutations', () => {
   it('should store game loading status', () => {
@@ -35,14 +37,22 @@ describe('Game mutations', () => {
     expect(state.ads).to.equal(ads);
   });
 
+  it('should store shop items', () => {
+    const state = { items: [] };
+
+    STORE_ITEMS(state, items);
+
+    expect(state.items).to.equal(items);
+  });
+
   it('should store update game', () => {
     const state = { game };
 
-    UPDATE_GAME(state, gameUpdate);
+    UPDATE_GAME(state, solvedAdUpdate);
 
     expect(state.game).to.deep.equal({
       ...game,
-      ...gameUpdate
+      ...solvedAdUpdate
     });
   });
 

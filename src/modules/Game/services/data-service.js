@@ -15,3 +15,8 @@ export const fetchAds = gameId => client.get(`/api/v2/${gameId}/messages`);
 
 export const fetchSolveAd = (gameId, adId) =>
   client.post(`/api/v2/${gameId}/solve/${adId}`);
+
+export const fetchItems = gameId => client.get(`/api/v2/${gameId}/shop`);
+
+export const fetchBuyItem = (gameId, itemId) =>
+  client.post(`/api/v2/${gameId}/shop/buy/${itemId}`);

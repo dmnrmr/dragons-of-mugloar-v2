@@ -3,7 +3,13 @@
     <span class="game__loader loader"></span>
 
     <template v-if="status !== LoadStatus.Fail">
-      <dm-game-stats :stats="game" />
+      <dm-game-stats :stats="game">
+        <dm-item-shop
+          :gold="game.gold"
+          :items="items"
+          @item-buy="buyItem({ gameId: game.gameId, itemId: $event })"
+        ></dm-item-shop>
+      </dm-game-stats>
 
       <div class="columns is-multiline">
         <div
@@ -60,22 +66,24 @@ import { mapActions, mapState } from 'vuex';
 import LoadStatus from '../constants';
 import DmAdCard from '../components/ad-card/AdCard.vue';
 import DmGameStats from '../components/game-stats/GameStats.vue';
+import DmItemShop from '../components/item-shop/ItemShop.vue';
 
 export default {
   name: 'DmGame',
   components: {
     DmAdCard,
-    DmGameStats
+    DmGameStats,
+    DmItemShop
   },
   data: () => ({ LoadStatus }),
   computed: {
-    ...mapState('game', ['status', 'game', 'ads']),
+    ...mapState('game', ['status', 'game', 'ads', 'items']),
     isLoading() {
       return this.status === LoadStatus.Loading;
     }
   },
   methods: {
-    ...mapActions('game', ['solveAd'])
+    ...mapActions('game', ['buyItem', 'solveAd'])
   }
 };
 </script>

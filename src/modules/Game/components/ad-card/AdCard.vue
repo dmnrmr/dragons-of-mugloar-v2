@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <section class="dm-ad-message">
+    <section class="dm-ad-message" :class="{ 'dm-ad-message--encrypted': ad.encrypted }">
       {{ ad.message }}
     </section>
 
@@ -42,7 +42,7 @@
 <style lang="scss" scoped>
 @import '~bulma/sass/utilities/mixins';
 
-section {
+.dm-ad-message {
   height: 5rem;
 
   @include until($widescreen) {
@@ -56,7 +56,10 @@ section {
   @include until($tablet) {
     height: auto;
     padding-bottom: 1rem;
-    word-break: initial;
+  }
+
+  &--encrypted {
+    word-break: break-all;
   }
 }
 </style>

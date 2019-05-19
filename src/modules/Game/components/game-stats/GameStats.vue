@@ -1,21 +1,19 @@
 <template>
-  <div class="level is-mobile">
-    <div class="level-left">
+  <div class="columns">
+    <div class="column stats">
       <div
         v-for="(stat, index) in gameStats"
         :key="index"
         v-tooltip="stat.tooltip"
-        :class="`level-item stat stat--${stat.name}`"
+        :class="`stats__stat stats__stat--${stat.name}`"
       >
         <component :is="stat.iconComponent"></component>
         <span class="has-text-weight-bold">{{ stat.value }}</span>
       </div>
     </div>
 
-    <div class="level-right">
-      <div class="level-item">
-        shop
-      </div>
+    <div class="column shop">
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -29,6 +27,22 @@
   @include mobile {
     display: none;
   }
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+
+  &__stat {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+  }
+}
+
+.shop {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>
 
