@@ -61,10 +61,7 @@ export const buyItem = ({ commit }, { gameId, itemId }) => {
   return fetchBuyItem(gameId, itemId)
     .then(({ data }) => {
       const { shoppingSuccess, ...game } = data;
-      const notificator = shoppingSuccess ? notification.success : notification.error;
-      const message = shoppingSuccess ? `You've bought an item` : 'Failed to buy an item';
 
-      notificator(message);
       commit('UPDATE_GAME', game);
 
       return getAds(gameId, commit).then(() =>

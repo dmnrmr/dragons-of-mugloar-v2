@@ -291,29 +291,6 @@ describe('Game actions', () => {
       });
     });
 
-    it('should emit a success notification if item is bought', () => {
-      return buyItem().then(() => {
-        expect(notificationService.success).to.have.been.calledWithExactly(
-          `You've bought an item`
-        );
-      });
-    });
-
-    it('should emit an error notification if item is not bought', () => {
-      dataService.fetchBuyItem.resolves({
-        data: {
-          ...boughItemUpdate,
-          shoppingSuccess: false
-        }
-      });
-
-      return buyItem().then(() => {
-        expect(notificationService.error).to.have.been.calledWithExactly(
-          'Failed to buy an item'
-        );
-      });
-    });
-
     it('should commit game updated payload after item is bought', () => {
       return buyItem().then(() => {
         const { shoppingSuccess, ...updatedGameStats } = boughItemUpdate;
