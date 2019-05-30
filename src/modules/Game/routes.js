@@ -7,7 +7,9 @@ export default {
       /* webpackChunkName: "game" */
       './containers/Game.vue'
     ),
-  beforeEnter: (_, __, next) => {
-    store.dispatch('game/startGame').then(() => next());
+  beforeEnter: async (_, __, next) => {
+    await store.dispatch('game/startGame');
+
+    next();
   }
 };

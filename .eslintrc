@@ -5,11 +5,7 @@
     "node": true,
     "jest": true
   },
-  "extends": [
-    "airbnb-base",
-    "plugin:vue/recommended",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["airbnb-base", "plugin:vue/recommended", "plugin:prettier/recommended"],
   "overrides": [
     {
       "files": ["config/*.js"],
