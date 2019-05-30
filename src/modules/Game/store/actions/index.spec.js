@@ -86,6 +86,31 @@ describe('Game actions', () => {
       });
     });
 
+    it('should commit decoded ads after they are fetched successfully', () => {
+      const [ad, ...otherAds] = ads;
+
+      const { adId, message, probability } = ad;
+      const encryptedAd = {
+        ...ad,
+        adId: btoa(adId),
+        encrypted: true,
+        message: btoa(message),
+        probability: btoa(probability)
+      };
+
+      dataService.fetchAds.resolves({ data: [encryptedAd, ...otherAds] });
+
+      return startGame().then(() => {
+        expect(commit.getCall(2)).to.have.been.calledWithExactly('STORE_ADS', [
+          {
+            ...ad,
+            encrypted: true
+          },
+          ...otherAds
+        ]);
+      });
+    });
+
     it('should commit shop items payload after items are fetched successfully', () => {
       return startGame().then(() => {
         expect(commit.getCall(3)).to.have.been.calledWithExactly('STORE_ITEMS', items);

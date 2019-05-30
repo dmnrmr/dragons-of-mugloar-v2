@@ -23,14 +23,13 @@
       </div>
     </div>
 
-    <section class="dm-ad-message" :class="{ 'dm-ad-message--encrypted': ad.encrypted }">
+    <section class="dm-ad-message">
       {{ ad.message }}
     </section>
 
     <footer>
       <button
         class="button is-small is-fullwidth is-outlined is-link dm-ad-solve"
-        :disabled="ad.encrypted"
         @click="solve(ad.adId)"
       >
         Solve
@@ -56,10 +55,6 @@
   @include until($tablet) {
     height: auto;
     padding-bottom: 1rem;
-  }
-
-  &--encrypted {
-    word-break: break-all;
   }
 }
 </style>

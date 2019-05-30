@@ -8,8 +8,26 @@ import {
 import LoadStatus from '../../constants';
 import notification from '../../../../services/notification';
 
+const decodeAds = ads =>
+  ads.map(ad => {
+    const { adId, encrypted, message, probability } = ad;
+
+    if (!encrypted) {
+      return ad;
+    }
+
+    return {
+      ...ad,
+      adId: atob(adId),
+      message: atob(message),
+      probability: atob(probability)
+    };
+  });
+
 const getAds = (gameId, commit) =>
-  fetchAds(gameId).then(({ data: ads }) => {
+  fetchAds(gameId).then(({ data }) => {
+    const ads = decodeAds(data);
+
     commit('STORE_ADS', ads);
   });
 

@@ -104,15 +104,6 @@ describe('AdCard component', () => {
       expect(tagRef.classes()).to.contain('is-black');
       expect(tagRef.text()).to.be.equal('~15%');
     });
-
-    it('should render encrypted probability tag', () => {
-      wrapper.setProps({ ad: getAdWithProbability('KLjnxMYKwgugHG') });
-
-      const tagRef = wrapper.find('.tag');
-
-      expect(tagRef.classes()).to.contain('is-light');
-      expect(tagRef.text()).to.be.equal('~0%');
-    });
   });
 
   describe('Reward', () => {
