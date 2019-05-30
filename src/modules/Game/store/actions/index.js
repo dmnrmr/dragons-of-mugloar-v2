@@ -1,3 +1,4 @@
+import rot13 from 'rot-13';
 import {
   fetchAds,
   fetchBuyItem,
@@ -8,6 +9,8 @@ import {
 import LoadStatus from '../../constants';
 import notification from '../../../../services/notification';
 
+const decode = value => decodeURIComponent(escape(atob(value)));
+
 const decodeAds = ads =>
   ads.map(ad => {
     const { adId, encrypted, message, probability } = ad;
@@ -16,11 +19,20 @@ const decodeAds = ads =>
       return ad;
     }
 
+    if (encrypted === 1) {
+      return {
+        ...ad,
+        adId: decode(adId),
+        message: decode(message),
+        probability: decode(probability)
+      };
+    }
+
     return {
       ...ad,
-      adId: atob(adId),
-      message: atob(message),
-      probability: atob(probability)
+      adId: rot13(adId),
+      message: rot13(message),
+      probability: rot13(probability)
     };
   });
 

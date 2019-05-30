@@ -1,5 +1,7 @@
 import sinon from 'sinon';
-import ads from '../../../../../test/fixtures/ads.json';
+import otherAds from '../../../../../test/fixtures/ads.json';
+import encryptedAds from '../../../../../test/fixtures/encryptedAds.json';
+import unencryptedAds from '../../../../../test/fixtures/unencryptedAds.json';
 import boughItemUpdate from '../../../../../test/fixtures/buyItem.json';
 import game from '../../../../../test/fixtures/game.json';
 import items from '../../../../../test/fixtures/shopItems.json';
@@ -28,6 +30,8 @@ const actions = actionsInjector({
 describe('Game actions', () => {
   const sandbox = sinon.createSandbox();
   const commit = sandbox.spy();
+  const ads = [...otherAds, ...encryptedAds];
+  const readableAds = [...otherAds, ...unencryptedAds];
 
   beforeEach(() => {
     sandbox.stub(dataService, 'fetchGame').resolves({ data: game });
@@ -83,31 +87,7 @@ describe('Game actions', () => {
     it('should commit ads payload after ads are fetched successfully', async () => {
       await startGame();
 
-      expect(commit.getCall(2)).to.have.been.calledWithExactly('STORE_ADS', ads);
-    });
-
-    it('should commit decoded ads after they are fetched successfully', async () => {
-      const [ad, ...otherAds] = ads;
-      const { adId, message, probability } = ad;
-      const encryptedAd = {
-        ...ad,
-        adId: btoa(adId),
-        encrypted: true,
-        message: btoa(message),
-        probability: btoa(probability)
-      };
-
-      dataService.fetchAds.resolves({ data: [encryptedAd, ...otherAds] });
-
-      await startGame();
-
-      expect(commit.getCall(2)).to.have.been.calledWithExactly('STORE_ADS', [
-        {
-          ...ad,
-          encrypted: true
-        },
-        ...otherAds
-      ]);
+      expect(commit.getCall(2)).to.have.been.calledWithExactly('STORE_ADS', readableAds);
     });
 
     it('should commit shop items payload after items are fetched successfully', async () => {
@@ -222,7 +202,7 @@ describe('Game actions', () => {
     it('should commit ads payload after ads are fetched successfully', async () => {
       await solveAd();
 
-      expect(commit.getCall(2)).to.have.been.calledWithExactly('STORE_ADS', ads);
+      expect(commit.getCall(2)).to.have.been.calledWithExactly('STORE_ADS', readableAds);
     });
 
     it('should commit game loading status after ads are fetched successfully', async () => {
@@ -335,7 +315,7 @@ describe('Game actions', () => {
     it('should commit ads payload after ads are fetched successfully', async () => {
       await buyItem();
 
-      expect(commit.getCall(2)).to.have.been.calledWithExactly('STORE_ADS', ads);
+      expect(commit.getCall(2)).to.have.been.calledWithExactly('STORE_ADS', readableAds);
     });
 
     it('should commit game loading status after ads are fetched successfully', async () => {

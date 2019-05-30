@@ -1,0 +1,18 @@
+[
+  {
+    "adId": "fMdaCepG",
+    "message": "Help Štefa Ellsworth to transport a magic cat to village in Ridgecaster",
+    "reward": 11,
+    "expiresIn": 7,
+    "encrypted": 1,
+    "probability": "Piece of cake"
+  },
+  {
+    "adId": "esp7oOxF",
+    "message": "Help Jefimija Nicolson to write their biographical novel about their difficulties with a deranged cat",
+    "reward": 42,
+    "expiresIn": 7,
+    "encrypted": 2,
+    "probability": "Piece of cake"
+  }
+]
