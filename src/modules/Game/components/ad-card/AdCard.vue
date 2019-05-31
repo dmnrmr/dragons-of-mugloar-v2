@@ -3,8 +3,8 @@
     <div class="level is-mobile">
       <div class="level-left">
         <div class="lever-item">
-          <span v-tooltip="ad.probability" class="tag" :class="probabilityTag.className">
-            ~{{ probabilityTag.probability }}%
+          <span class="tag" :class="probabilityClassName">
+            {{ ad.probability }}
           </span>
         </div>
       </div>
@@ -65,85 +65,18 @@ import DmHourglass from '../../../../components/icons/hourglass.svg';
 import DmMoney from '../../../../components/icons/money.svg';
 import tooltip from '../../../../directives/tooltip';
 
-const getProbabilityTag = probability => {
-  switch (probability) {
-    case 'Sure thing': {
-      return {
-        probability: 98,
-        className: 'is-info'
-      };
-    }
-
-    case 'Piece of cake': {
-      return {
-        probability: 97,
-        className: 'is-info'
-      };
-    }
-
-    case 'Walk in the park': {
-      return {
-        probability: 88,
-        className: 'is-success'
-      };
-    }
-
-    case 'Hmmm....': {
-      return {
-        probability: 79,
-        className: 'is-success'
-      };
-    }
-
-    case 'Quite likely': {
-      return {
-        probability: 75,
-        className: 'is-success'
-      };
-    }
-
-    case 'Gamble': {
-      return {
-        probability: 55,
-        className: 'is-warning'
-      };
-    }
-
-    case 'Risky': {
-      return {
-        probability: 46,
-        className: 'is-danger'
-      };
-    }
-
-    case 'Rather detrimental': {
-      return {
-        probability: 34,
-        className: 'is-danger'
-      };
-    }
-
-    case 'Playing with fire': {
-      return {
-        probability: 25,
-        className: 'is-black'
-      };
-    }
-
-    case 'Suicide mission': {
-      return {
-        probability: 15,
-        className: 'is-black'
-      };
-    }
-
-    default: {
-      return {
-        probability: 0,
-        className: 'is-light'
-      };
-    }
-  }
+const probabilityClassName = {
+  'Sure thing': 'is-info',
+  'Piece of cake': 'is-info',
+  'Walk in the park': 'is-success',
+  'Hmmm....': 'is-success',
+  'Quite likely': 'is-success',
+  Gamble: 'is-warning',
+  Risky: 'is-danger',
+  'Rather detrimental': 'is-danger',
+  'Playing with fire': 'is-black',
+  'Suicide mission': 'is-black',
+  Impossible: 'is-light'
 };
 
 export default {
@@ -163,7 +96,7 @@ export default {
     }
   },
   computed: {
-    probabilityTag: ({ ad }) => getProbabilityTag(ad.probability)
+    probabilityClassName: ({ ad }) => probabilityClassName[ad.probability]
   },
   methods: {
     solve(adId) {
