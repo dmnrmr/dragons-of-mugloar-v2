@@ -47,7 +47,6 @@
 </style>
 
 <script>
-import DmChart from '../../../../components/icons/chart.svg';
 import DmChartOutlined from '../../../../components/icons/chart-outlined.svg';
 import DmFace from '../../../../components/icons/face.svg';
 import DmFavorite from '../../../../components/icons/favorite.svg';
@@ -72,10 +71,6 @@ const statComponentMap = {
     iconComponent: DmChartOutlined,
     tooltip: 'Current score'
   },
-  highScore: {
-    iconComponent: DmChart,
-    tooltip: 'Highest score'
-  },
   turn: {
     iconComponent: DmForward,
     tooltip: 'Current turn'
@@ -83,7 +78,7 @@ const statComponentMap = {
 };
 
 const filterHiddenStats = stat => {
-  const hiddenStats = ['gameId'];
+  const hiddenStats = ['gameId', 'highScore'];
   const [name] = stat;
 
   return !hiddenStats.includes(name);
@@ -104,7 +99,6 @@ const extendStats = stat => {
 export default {
   name: 'DmGameStats',
   components: {
-    DmChart,
     DmChartOutlined,
     DmFace,
     DmFavorite,

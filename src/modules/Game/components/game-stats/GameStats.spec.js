@@ -15,7 +15,7 @@ describe('Game stats component', () => {
   it('should render only visible game stats', () => {
     const statRefArray = wrapper.findAll('.stats__stat');
 
-    expect(statRefArray).to.have.lengthOf(6);
+    expect(statRefArray).to.have.lengthOf(5);
   });
 
   it('should render number of lives', () => {
@@ -40,12 +40,6 @@ describe('Game stats component', () => {
     const statRef = wrapper.find('.stats__stat--score');
 
     expect(statRef.text()).to.equal(String(game.score));
-  });
-
-  it('should render highest score', () => {
-    const statRef = wrapper.find('.stats__stat--highScore');
-
-    expect(statRef.text()).to.equal(String(game.highScore));
   });
 
   it('should render current turn', () => {
