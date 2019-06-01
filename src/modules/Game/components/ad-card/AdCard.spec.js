@@ -135,17 +135,6 @@ describe('AdCard component', () => {
       expect(tagRef.classes()).to.contain('is-light');
       expect(tagRef.text()).to.be.equal(probability);
     });
-
-    it('should render "unknown" probability tag', () => {
-      const probability = 'unknown';
-
-      wrapper.setProps({ ad: getAdWithProbability(probability) });
-
-      const tagRef = wrapper.find('.tag');
-
-      expect(tagRef.classes()).to.contain('is-light');
-      expect(tagRef.text()).to.be.equal(probability);
-    });
   });
 
   describe('Reward', () => {

@@ -6,8 +6,10 @@ import LoadStatus from '../constants';
 import DmAdCard from '../components/ad-card/AdCard.vue';
 import DmGameStats from '../components/game-stats/GameStats.vue';
 import DmItemShop from '../components/item-shop/ItemShop.vue';
+import DmReputation from '../components/reputation/Reputation.vue';
 import ads from '../../../../test/fixtures/ads.json';
 import game from '../../../../test/fixtures/game.json';
+import gameReputation from '../../../../test/fixtures/reputation.json';
 import shopItems from '../../../../test/fixtures/shopItems.json';
 
 const localVue = createLocalVue();
@@ -17,6 +19,7 @@ localVue.use(Vuex);
 
 const actions = {
   buyItem: sandbox.spy(),
+  investigateReputation: sandbox.spy(),
   solveAd: sandbox.spy()
 };
 
@@ -26,10 +29,11 @@ const createMockedStore = (status = LoadStatus.Success) =>
       game: {
         namespaced: true,
         state: {
-          status,
-          game,
           ads,
-          items: shopItems
+          game,
+          items: shopItems,
+          reputation: gameReputation,
+          status
         },
         actions
       }
@@ -41,6 +45,7 @@ describe('Game page component', () => {
     localVue,
     store: createMockedStore()
   });
+  const { gameId } = game;
 
   afterEach(() => {
     sandbox.restore();
@@ -88,7 +93,7 @@ describe('Game page component', () => {
     adCardRef.vm.$emit('ad-solve', adId);
 
     expect(actions.solveAd.getCall(0).args[1]).to.deep.equal({
-      gameId: game.gameId,
+      gameId,
       adId
     });
   });
@@ -126,8 +131,23 @@ describe('Game page component', () => {
     shopRef.vm.$emit('item-buy', itemId);
 
     expect(actions.buyItem.getCall(0).args[1]).to.deep.equal({
-      gameId: game.gameId,
+      gameId,
       itemId
     });
+  });
+
+  it('should pass reputation to reputation component', () => {
+    const reputationRef = reusableWrapper.find(DmReputation);
+    const { reputation } = reputationRef.props();
+
+    expect(reputation).to.equal(gameReputation);
+  });
+
+  it('should trigger reputation investigation action', () => {
+    const reputationRef = reusableWrapper.find(DmReputation);
+
+    reputationRef.vm.$emit('refresh-reputation');
+
+    expect(actions.investigateReputation.getCall(0).args[1]).to.deep.equal(gameId);
   });
 });

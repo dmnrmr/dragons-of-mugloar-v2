@@ -4,7 +4,8 @@ import {
   fetchBuyItem,
   fetchGame,
   fetchItems,
-  fetchSolveAd
+  fetchSolveAd,
+  fetchReputation
 } from '../../services/data-service';
 import LoadStatus from '../../constants';
 import notification from '../../../../services/notification';
@@ -50,6 +51,7 @@ const getItems = async (gameId, commit) => {
 };
 
 export const startGame = async ({ commit }) => {
+  commit('STORE_REPUTATION', { people: 0, state: 0, underworld: 0 });
   commit('STORE_GAME_LOADING_STATUS', { status: LoadStatus.Loading });
 
   try {
@@ -96,6 +98,23 @@ export const buyItem = async ({ commit }, { gameId, itemId }) => {
     const { shoppingSuccess, ...game } = data;
 
     commit('UPDATE_GAME', game);
+
+    await getAds(gameId, commit);
+
+    return commit('STORE_GAME_LOADING_STATUS', { status: LoadStatus.Success });
+  } catch (e) {
+    return commit('STORE_GAME_LOADING_STATUS', { status: LoadStatus.Fail, e });
+  }
+};
+
+export const investigateReputation = async ({ commit }, gameId) => {
+  commit('STORE_GAME_LOADING_STATUS', { status: LoadStatus.Loading });
+  commit('INCREMENT_GAME_TURN');
+
+  try {
+    const { data: reputation } = await fetchReputation(gameId);
+
+    commit('STORE_REPUTATION', reputation);
 
     await getAds(gameId, commit);
 

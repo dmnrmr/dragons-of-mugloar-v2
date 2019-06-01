@@ -3,6 +3,11 @@
     <span class="game__loader loader"></span>
 
     <template v-if="status !== LoadStatus.Fail">
+      <dm-reputation
+        :reputation="reputation"
+        @refresh-reputation="investigateReputation(game.gameId)"
+      ></dm-reputation>
+
       <dm-game-stats :stats="game">
         <dm-item-shop
           :gold="game.gold"
@@ -67,23 +72,25 @@ import LoadStatus from '../constants';
 import DmAdCard from '../components/ad-card/AdCard.vue';
 import DmGameStats from '../components/game-stats/GameStats.vue';
 import DmItemShop from '../components/item-shop/ItemShop.vue';
+import DmReputation from '../components/reputation/Reputation.vue';
 
 export default {
   name: 'DmGame',
   components: {
     DmAdCard,
     DmGameStats,
-    DmItemShop
+    DmItemShop,
+    DmReputation
   },
   data: () => ({ LoadStatus }),
   computed: {
-    ...mapState('game', ['status', 'game', 'ads', 'items']),
+    ...mapState('game', ['status', 'game', 'ads', 'items', 'reputation']),
     isLoading() {
       return this.status === LoadStatus.Loading;
     }
   },
   methods: {
-    ...mapActions('game', ['buyItem', 'solveAd'])
+    ...mapActions('game', ['buyItem', 'investigateReputation', 'solveAd'])
   }
 };
 </script>

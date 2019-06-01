@@ -20,3 +20,6 @@ export const fetchItems = gameId => client.get(`/api/v2/${gameId}/shop`);
 
 export const fetchBuyItem = (gameId, itemId) =>
   client.post(`/api/v2/${gameId}/shop/buy/${itemId}`);
+
+export const fetchReputation = gameId =>
+  client.post(`/api/v2/${gameId}/investigate/reputation`);

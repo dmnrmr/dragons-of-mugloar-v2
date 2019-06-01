@@ -19,16 +19,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~bulma/sass/utilities/mixins';
-
-.loader-text {
-  padding-left: 5px;
-
-  @include mobile {
-    display: none;
-  }
-}
-
 .stats {
   display: flex;
   align-items: center;

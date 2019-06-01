@@ -73,4 +73,16 @@ describe('Data service', () => {
       );
     });
   });
+
+  describe('Fetch reputation', () => {
+    it('should send a post request to investigate reputation', () => {
+      const gameId = 'foo';
+
+      dataService.fetchReputation(gameId);
+
+      expect(axiosPostSpy).to.have.been.calledWithExactly(
+        `/api/v2/${gameId}/investigate/reputation`
+      );
+    });
+  });
 });

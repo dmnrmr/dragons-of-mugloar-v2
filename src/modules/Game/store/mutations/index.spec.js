@@ -1,9 +1,11 @@
 import {
   GAME_OVER,
+  INCREMENT_GAME_TURN,
   STORE_ADS,
   STORE_GAME_LOADING_STATUS,
   STORE_GAME,
   STORE_ITEMS,
+  STORE_REPUTATION,
   UPDATE_GAME
 } from './index';
 import ads from '../../../../../test/fixtures/ads.json';
@@ -62,5 +64,22 @@ describe('Game mutations', () => {
     GAME_OVER(state);
 
     expect(state.status).to.equal(LoadStatus.Done);
+  });
+
+  it('should store reputation', () => {
+    const reputation = { people: 1, state: 0, underworld: 0 };
+    const state = { reputation: { people: 0, state: 0, underworld: 0 } };
+
+    STORE_REPUTATION(state, reputation);
+
+    expect(state.reputation).to.equal(reputation);
+  });
+
+  it('should increment game turn', () => {
+    const state = { game: { ...game } };
+
+    INCREMENT_GAME_TURN(state);
+
+    expect(state.game.turn).to.equal(game.turn + 1);
   });
 });
